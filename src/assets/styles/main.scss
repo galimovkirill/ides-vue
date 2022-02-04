@@ -5,6 +5,7 @@
 
 body {
     font-family: sans-serif;
+    background: var(--clr-theme-background);
 }
 
 a {
@@ -14,4 +15,5 @@ a {
 
 main {
     padding-top: var(--ides-header-height);
+    padding-left: var(--ides-sidebar-width);
 }
