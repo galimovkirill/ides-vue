@@ -1,9 +1,7 @@
 <template>
-    <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+    <layout-default />
 </template>
 
 <script setup lang="ts">
-import HelloWorld from "./components/HelloWorld.vue";
+import LayoutDefault from "@/layouts/default.vue";
 </script>
-
-<style></style>

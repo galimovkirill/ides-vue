@@ -1,0 +1,20 @@
+$settings: (
+    --ides-header-height: 3.5rem,
+    --ides-border-radius: 5px,
+    // clr - color
+    --clr-theme-layout: #fff,
+    --clr-theme-background: #f9f9f9,
+    --clr-theme-border: #dee6f3,
+    --clr-text: #050c42,
+    --clr-text-weak: #acafc1,
+    --clr-primary: #0057ff,
+    --clr-primary-weak: #dee6f3,
+    --clr-danger: #fc346a,
+    --clr-danger-weak: #fed6e1,
+);
+
+:root {
+    @each $option, $value in $settings {
+        #{$option}: $value;
+    }
+}
