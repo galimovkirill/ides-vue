@@ -19,7 +19,7 @@ export default () => {
         // css: {
         //     preprocessorOptions: {
         //         scss: {
-        //             additionalData: `@import "@/assets/styles/vars.scss";`,
+        //             additionalData: `@import "@/assets/fonts/SF-Ui-Display/stylesheet.css";`,
         //         },
         //     },
         // },
