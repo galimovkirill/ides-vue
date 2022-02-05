@@ -7,7 +7,6 @@
                 to="/"
                 :class="['navigation-item', { active: index === 0 }]"
             >
-                <svg-icon name="logo" />
                 <span class="navigation-item__label">{{ item.label }}</span>
             </router-link>
         </div>
@@ -15,8 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { sidebarNavigation } from '@/constants/navigation.js'
-import SvgIcon from '@/components/SvgIcon.vue'
+import { sidebarNavigation } from '@/constants/navigation'
 import { ref, computed } from 'vue'
 
 const role = 'schoolAdmin'
