@@ -76,11 +76,13 @@
 
     &-chat {
         position: relative;
+
         svg {
             display: flex;
-            color: var(--clr-text-weak);
+            color: var(--clr-primary);
             width: 1.5rem;
             height: 1.5rem;
+            transition: $transition;
         }
 
         &.active {
@@ -94,6 +96,16 @@
                 background-color: var(--clr-danger);
                 display: block;
                 border-radius: 100%;
+                transition: $transition;
+            }
+        }
+
+        &:hover {
+            svg {
+                color: var(--clr-primary-weak);
+            }
+            &::after {
+                background-color: var(--clr-danger-weak);
             }
         }
     }

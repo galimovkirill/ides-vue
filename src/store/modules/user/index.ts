@@ -4,14 +4,13 @@ import IRootStateTypes from '@/store/types'
 
 const userModule: Module<IUserTypes, IRootStateTypes> = {
     state: {
-        role: 'student',
+        role: 'admin',
     },
     getters: {
         getRole(state) {
             return state.role
         },
     },
-    mutations: {},
     actions: {},
     namespaced: true,
 }

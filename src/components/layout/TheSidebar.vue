@@ -5,7 +5,7 @@
                 v-for="(item, index) in navigation"
                 :key="index"
                 to="/"
-                :class="['navigation-item', { active: index === 0 }]"
+                :class="['navigation-item', { active: index === 3 }]"
             >
                 <svg-icon :name="item.icon" />
                 <span class="navigation-item__label">{{ item.label }}</span>

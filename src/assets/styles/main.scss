@@ -3,6 +3,7 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -16,9 +17,13 @@ a {
     color: inherit;
 }
 
-main {
+.main {
     padding-top: var(--ides-header-height);
     padding-left: var(--ides-sidebar-width);
+
+    &-wrapper {
+        padding: 1.25rem;
+    }
 }
 
 svg {
