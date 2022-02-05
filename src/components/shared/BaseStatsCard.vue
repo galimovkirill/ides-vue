@@ -1,5 +1,5 @@
 <template>
-    <component :is="tag" :to="link" class="stats-card">
+    <component :is="tag" :to="link" class="stats-card" :class="indexStyleClass">
         <div class="stats-card__info">
             <span class="stats-card__count">{{ count }}</span>
             <span class="stats-card__type">{{ type }}</span>
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, getCurrentInstance } from 'vue'
 
 export default defineComponent({
     props: {
@@ -33,6 +33,7 @@ export default defineComponent({
     },
 
     setup(props) {
+        const instance = getCurrentInstance()
         const tag = computed(() => {
             if (props.link) {
                 return 'router-link'
@@ -40,11 +41,20 @@ export default defineComponent({
             return 'div'
         })
 
+        const indexStyleClass = computed(() => {
+            const key: any = instance?.vnode.key
+            if (key % 2 === 0) {
+                return 'even'
+            }
+            return 'odd'
+        })
+
         return {
             count: props.count,
             type: props.type,
             icon: props.icon,
             tag,
+            indexStyleClass,
         }
     },
 })
@@ -59,6 +69,7 @@ export default defineComponent({
     border: 1px solid var(--clr-theme-border);
     border-radius: var(--ides-border-radius);
     padding: 1.5rem;
+    transition: $transition;
 
     &__info {
         display: flex;
@@ -84,13 +95,24 @@ export default defineComponent({
         width: 80px;
         height: 80px;
         margin-left: 1rem;
-        background: var(--clr-primary);
-        border-radius: var(--ides-border-radius);
+        border-radius: 1rem;
 
         svg {
             width: 40px;
             height: 40px;
         }
     }
+
+    &:hover {
+        box-shadow: $shadow;
+    }
+}
+
+.stats-card.odd .stats-card__icon {
+    background: var(--clr-primary-strong);
+}
+
+.stats-card.even .stats-card__icon {
+    background: var(--clr-primary);
 }
 </style>

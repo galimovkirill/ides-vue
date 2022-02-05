@@ -116,7 +116,7 @@
         margin: 0 1.5rem;
 
         &__name {
-            font-weight: 600;
+            font-size: 14px;
         }
 
         &__avatar {
