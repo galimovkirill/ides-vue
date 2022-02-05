@@ -8,6 +8,7 @@
 body {
     font-family: 'Gilroy', sans-serif;
     background: var(--clr-theme-background);
+    color: var(--clr-text);
 }
 
 a {
@@ -18,4 +19,9 @@ a {
 main {
     padding-top: var(--ides-header-height);
     padding-left: var(--ides-sidebar-width);
+}
+
+svg {
+    width: 1rem;
+    height: 1rem;
 }

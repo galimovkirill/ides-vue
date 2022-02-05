@@ -13,7 +13,9 @@
         </div>
 
         <div class="header-menu">
-            <div class="header-chat">Chat</div>
+            <router-link to="/" class="header-chat" :class="{ active: true }">
+                <svg-icon name="letter" />
+            </router-link>
             <router-link to="/" class="header-profile">
                 <span class="header-profile__name">Алибаев Тимур</span>
                 <img
@@ -22,7 +24,9 @@
                     class="header-profile__avatar"
                 />
             </router-link>
-            <div class="header-logout">Logout</div>
+            <div class="header-logout">
+                <svg-icon name="logout" />
+            </div>
         </div>
     </header>
 </template>
@@ -48,6 +52,7 @@
         align-items: center;
 
         &__app {
+            display: flex;
             margin-right: 2rem;
             img {
                 height: 2.5rem;
@@ -57,6 +62,7 @@
         &__customer {
             display: flex;
             align-items: center;
+            font-weight: 600;
             img {
                 margin-right: 0.75rem;
             }
@@ -68,16 +74,61 @@
         align-items: center;
     }
 
+    &-chat {
+        position: relative;
+        svg {
+            display: flex;
+            color: var(--clr-text-weak);
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        &.active {
+            &::after {
+                content: '';
+                position: absolute;
+                right: -4px;
+                top: 0;
+                width: 10px;
+                height: 10px;
+                background-color: var(--clr-danger);
+                display: block;
+                border-radius: 100%;
+            }
+        }
+    }
+
     &-profile {
         display: flex;
         align-items: center;
         margin: 0 1.5rem;
+
+        &__name {
+            font-weight: 600;
+        }
+
         &__avatar {
             width: 2.5rem;
             height: 2.5rem;
             border-radius: var(--ides-border-radius);
             object-fit: cover;
             margin-left: 1rem;
+        }
+    }
+
+    &-logout {
+        display: flex;
+        cursor: pointer;
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: var(--clr-primary);
+            transition: $transition;
+
+            &:hover {
+                color: var(--clr-primary-weak);
+            }
         }
     }
 }

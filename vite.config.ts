@@ -16,12 +16,12 @@ export default () => {
             alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
         },
 
-        // css: {
-        //     preprocessorOptions: {
-        //         scss: {
-        //             additionalData: `@import "@/assets/fonts/SF-Ui-Display/stylesheet.css";`,
-        //         },
-        //     },
-        // },
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    additionalData: `@import "@/assets/styles/vars.scss";`,
+                },
+            },
+        },
     }
 }

@@ -7,6 +7,7 @@
                 to="/"
                 :class="['navigation-item', { active: index === 0 }]"
             >
+                <svg-icon :name="item.icon" />
                 <span class="navigation-item__label">{{ item.label }}</span>
             </router-link>
         </div>
@@ -34,7 +35,7 @@ const navigation = computed(() => sidebarNavigation[role])
     &-navigation {
         display: flex;
         flex-direction: column;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .navigation-item {
@@ -42,10 +43,21 @@ const navigation = computed(() => sidebarNavigation[role])
         align-items: center;
         height: 4rem;
         padding: 0 1rem;
+        transition: $transition;
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.75rem;
+        }
 
         &.active {
-            background: var(--clr-primary);
+            background: var(--clr-primary) !important;
             color: #fff;
+        }
+
+        &:hover {
+            background: var(--clr-primary-weak);
         }
     }
 }

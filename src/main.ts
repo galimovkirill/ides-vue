@@ -4,7 +4,7 @@ import App from './App.vue'
 // @ts-ignore
 import router from '@/router'
 
-import '@/assets/styles/vars.scss'
+import '@/assets/styles/colors.scss'
 import '@/assets/styles/main.scss'
 import 'virtual:svg-icons-register'
 
