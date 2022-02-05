@@ -1,5 +1,5 @@
 <template>
-    <div class="stats-card">
+    <component :is="tag" :to="link" class="stats-card">
         <div class="stats-card__info">
             <span class="stats-card__count">{{ count }}</span>
             <span class="stats-card__type">{{ type }}</span>
@@ -7,11 +7,11 @@
         <div class="stats-card__icon">
             <svg-icon :name="icon" />
         </div>
-    </div>
+    </component>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 
 export default defineComponent({
     props: {
@@ -27,13 +27,24 @@ export default defineComponent({
             type: String,
             required: true,
         },
+        link: {
+            type: String,
+        },
     },
 
     setup(props) {
+        const tag = computed(() => {
+            if (props.link) {
+                return 'router-link'
+            }
+            return 'div'
+        })
+
         return {
             count: props.count,
             type: props.type,
             icon: props.icon,
+            tag,
         }
     },
 })
