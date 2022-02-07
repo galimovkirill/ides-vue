@@ -1,5 +1,5 @@
 <template>
-    <div class="table">
+    <div class="table" :class="{ 'no-border': noBorder }">
         <div class="table-header">
             <div v-if="checkable" class="checkbox-cell">
                 <input
@@ -16,6 +16,7 @@
                 :key="col.field"
                 :label="col.label"
                 :width="col.width"
+                :text-align="col.textAlign"
             />
 
             <slot name="header-end"></slot>
@@ -34,7 +35,10 @@
                 <slot name="row-start" :row="row"></slot>
 
                 <template v-for="col in columns" :key="col.field">
-                    <base-table-row-item :width="col.width">
+                    <base-table-row-item
+                        :width="col.width"
+                        :text-align="col.textAlign"
+                    >
                         {{ getRowItemContent(col, row) }}
                     </base-table-row-item>
                 </template>
@@ -63,6 +67,13 @@
 
 // Keys of your data's objects must be the same as column's object "field".
 
+// ==================
+// Columns attributes:
+// 1) "field" - needed for data binding
+// 2) "label" - string to display in table's header
+// 3) "width" - column width
+// 4) "textAlign" - align text inside column
+
 import { defineComponent, ref } from 'vue'
 import BaseTableHeaderItem from '@/components/shared/Table/BaseTableHeaderItem.vue'
 import BaseTableRowItem from '@/components/shared/Table/BaseTableRowItem.vue'
@@ -85,6 +96,10 @@ export default defineComponent({
         checkedRows: {
             type: Array,
             default: () => [],
+        },
+        noBorder: {
+            type: Boolean,
+            default: false,
         },
     },
 
@@ -163,6 +178,15 @@ $horizontalPadding: 1rem;
     background: var(--clr-theme-layout);
     border: 1px solid var(--clr-theme-border);
     border-radius: var(--ides-border-radius);
+
+    &.no-border {
+        border: none;
+
+        .table-header {
+            border-top-left-radius: var(--ides-border-radius);
+            border-top-right-radius: var(--ides-border-radius);
+        }
+    }
 
     &-header {
         display: flex;

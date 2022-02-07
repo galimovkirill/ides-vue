@@ -1,5 +1,5 @@
 <template>
-    <component :is="tag" :to="link" class="stats-card" :class="indexStyleClass">
+    <component :is="tag" :to="to" class="stats-card" :class="indexStyleClass">
         <div class="stats-card__info">
             <span class="stats-card__count">{{ count }}</span>
             <span class="stats-card__type">{{ type }}</span>
@@ -27,7 +27,7 @@ export default defineComponent({
             type: String,
             required: true,
         },
-        link: {
+        to: {
             type: String,
         },
     },
@@ -35,7 +35,7 @@ export default defineComponent({
     setup(props) {
         const instance = getCurrentInstance()
         const tag = computed(() => {
-            if (props.link) {
+            if (props.to) {
                 return 'router-link'
             }
             return 'div'
