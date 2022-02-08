@@ -4,8 +4,11 @@
             <router-link
                 v-for="(item, index) in navigation"
                 :key="index"
-                to="/"
-                :class="['navigation-item', { active: index === 3 }]"
+                :to="{ name: item.routeName }"
+                :class="[
+                    'navigation-item',
+                    { active: route.name === item.routeName },
+                ]"
             >
                 <svg-icon :name="item.icon" />
                 <span class="navigation-item__label">{{ item.label }}</span>
@@ -16,7 +19,10 @@
 
 <script setup lang="ts">
 import { sidebarNavigation } from '@/constants/navigation'
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const role = 'schoolAdmin'
 const navigation = computed(() => sidebarNavigation[role])

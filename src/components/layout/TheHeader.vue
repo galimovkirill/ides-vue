@@ -1,10 +1,15 @@
 <template>
     <header class="header">
         <div class="header-logo">
-            <router-link to="/" class="header-logo__app">
+            <router-link :to="{ name: 'dashboard' }" class="header-logo__app">
                 <img src="@/assets/images/logo.svg" alt="IDES" />
             </router-link>
-            <a href="" class="header-logo__customer">
+
+            <a
+                href="https://mon.tatarstan.ru/"
+                target="_blank"
+                class="header-logo__customer"
+            >
                 <img src="@/assets/images/mon_ttr.svg" alt="МОН РТ" />
                 <span>
                     Министерство образования и науки Республики Татарстан
@@ -13,10 +18,15 @@
         </div>
 
         <div class="header-menu">
-            <router-link to="/" class="header-chat" :class="{ active: true }">
+            <router-link
+                :to="{ name: 'chats' }"
+                class="header-chat"
+                :class="{ active: true }"
+            >
                 <svg-icon name="letter" />
             </router-link>
-            <router-link to="/" class="header-profile">
+
+            <router-link :to="{ name: 'settings' }" class="header-profile">
                 <span class="header-profile__name">Алибаев Тимур</span>
                 <img
                     src="https://upload.ides.plus/api/file-storage/17112021-232734_942-unnamed.jpeg"
@@ -24,6 +34,7 @@
                     class="header-profile__avatar"
                 />
             </router-link>
+
             <div class="header-logout">
                 <svg-icon name="logout" />
             </div>
