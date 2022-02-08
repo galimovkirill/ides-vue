@@ -1,9 +1,12 @@
 module.exports = {
-  extends: [
-    'plugin:vue/vue3-essential',
-    'prettier',
-  ],
-  rules: {
-    'vue/no-unused-vars': 'error',
-  },
+    extends: ['plugin:vue/vue3-essential', 'prettier'],
+    rules: {
+        'vue/no-unused-vars': 'error',
+        'vue/multi-word-component-names': [
+            'error',
+            {
+                ignores: ['admin', 'student', 'teacher', 'parent'],
+            },
+        ],
+    },
 }

@@ -21,7 +21,11 @@
                     <h4>Преподаватели</h4>
                     <div class="rating-header__end">средний балл</div>
                 </div>
-                <table-component :columns="columns_1" :data="data_1" no-border />
+                <table-component
+                    :columns="columns_1"
+                    :data="data_1"
+                    no-border
+                />
             </div>
 
             <div class="rating-item">
@@ -29,7 +33,11 @@
                     <h4>Учащиеся</h4>
                     <div class="rating-header__end">средний балл</div>
                 </div>
-                <table-component :columns="columns_2" :data="data_2" no-border />
+                <table-component
+                    :columns="columns_2"
+                    :data="data_2"
+                    no-border
+                />
             </div>
         </div>
     </base-wrapper>
@@ -98,8 +106,6 @@ export default {
 }
 
 .dashboard-rating {
-    margin-top: 2rem;
-
     .rating {
         &-grid {
             display: grid;

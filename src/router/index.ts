@@ -35,7 +35,7 @@ const routes = [
     {
         path: '/library',
         name: 'library',
-        component: TmpComponent,
+        component: () => import(`../views/library/${userRole.value}.vue`),
     },
     {
         path: '/students',
