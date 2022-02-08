@@ -1,6 +1,6 @@
 <template>
     <div class="dashboard-stats">
-        <base-stats-card
+        <card-statistic
             v-for="card in 4"
             :key="card"
             :count="4"
@@ -21,7 +21,7 @@
                     <h4>Преподаватели</h4>
                     <div class="rating-header__end">средний балл</div>
                 </div>
-                <base-table :columns="columns_1" :data="data_1" no-border />
+                <table-component :columns="columns_1" :data="data_1" no-border />
             </div>
 
             <div class="rating-item">
@@ -29,22 +29,22 @@
                     <h4>Учащиеся</h4>
                     <div class="rating-header__end">средний балл</div>
                 </div>
-                <base-table :columns="columns_2" :data="data_2" no-border />
+                <table-component :columns="columns_2" :data="data_2" no-border />
             </div>
         </div>
     </base-wrapper>
 </template>
 
 <script>
-import BaseStatsCard from '@/components/shared/BaseStatsCard.vue'
-import BaseTable from '@/components/shared/Table/BaseTable.vue'
+import CardStatistic from '@/components/shared/Card/CardStatistic.vue'
+import TableComponent from '@/components/shared/Table/TableComponent.vue'
 import BaseWrapper from '@/components/shared/BaseWrapper.vue'
 
 export default {
     components: {
         BaseWrapper,
-        BaseTable,
-        BaseStatsCard,
+        TableComponent,
+        CardStatistic,
     },
 
     setup() {

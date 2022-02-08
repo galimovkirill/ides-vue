@@ -11,7 +11,7 @@
 
             <slot name="header-start"></slot>
 
-            <base-table-header-item
+            <table-header-item
                 v-for="col in columns"
                 :key="col.field"
                 :label="col.label"
@@ -35,12 +35,12 @@
                 <slot name="row-start" :row="row"></slot>
 
                 <template v-for="col in columns" :key="col.field">
-                    <base-table-row-item
+                    <table-row-item
                         :width="col.width"
                         :text-align="col.textAlign"
                     >
                         {{ getRowItemContent(col, row) }}
-                    </base-table-row-item>
+                    </table-row-item>
                 </template>
 
                 <slot name="row-end"></slot>
@@ -75,11 +75,11 @@
 // 4) "textAlign" - align text inside column
 
 import { defineComponent, ref } from 'vue'
-import BaseTableHeaderItem from '@/components/shared/Table/BaseTableHeaderItem.vue'
-import BaseTableRowItem from '@/components/shared/Table/BaseTableRowItem.vue'
+import TableHeaderItem from '@/components/shared/Table/TableHeaderItem.vue'
+import TableRowItem from '@/components/shared/Table/TableRowItem.vue'
 
 export default defineComponent({
-    components: { BaseTableRowItem, BaseTableHeaderItem },
+    components: { TableRowItem, TableHeaderItem },
     props: {
         columns: {
             type: Array,
