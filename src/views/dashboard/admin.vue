@@ -15,9 +15,22 @@
             <h3>Рейтинг пользователей</h3>
         </template>
 
-        <div class="dashboard-rating__row">
-            <base-table :columns="columns_1" :data="data_1" no-border />
-            <base-table :columns="columns_2" :data="data_2" no-border />
+        <div class="rating-grid">
+            <div class="rating-item">
+                <div class="rating-header">
+                    <h4>Преподаватели</h4>
+                    <div class="rating-header__end">средний балл</div>
+                </div>
+                <base-table :columns="columns_1" :data="data_1" no-border />
+            </div>
+
+            <div class="rating-item">
+                <div class="rating-header">
+                    <h4>Учащиеся</h4>
+                    <div class="rating-header__end">средний балл</div>
+                </div>
+                <base-table :columns="columns_2" :data="data_2" no-border />
+            </div>
         </div>
     </base-wrapper>
 </template>
@@ -87,10 +100,22 @@ export default {
 .dashboard-rating {
     margin-top: 2rem;
 
-    &__row {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+    .rating {
+        &-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        &-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            &__end {
+                font-size: 14px;
+            }
+        }
     }
 }
 </style>
