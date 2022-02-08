@@ -73,6 +73,7 @@ export default {
     cursor: pointer;
     transition: $transition;
     font-size: 14px;
+    font-weight: 500;
     border-radius: var(--ides-border-radius);
 
     &__content {

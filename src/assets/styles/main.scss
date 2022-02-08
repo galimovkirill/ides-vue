@@ -1,14 +1,15 @@
-@import '../fonts/Gilroy/stylesheet.css';
+// @import '../fonts/Gilroy/stylesheet.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import './common.scss';
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    font-family: 'Gilroy', sans-serif;
     background: var(--clr-theme-background);
     color: var(--clr-text);
 }

@@ -84,7 +84,6 @@ export default defineComponent({
     &__type {
         color: var(--clr-text-weak);
         margin-top: 1rem;
-        font-weight: 500;
     }
 
     &__icon {
