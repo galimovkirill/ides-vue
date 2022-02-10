@@ -1,10 +1,10 @@
 <template>
     <div
-        class="w-full"
+        class="table-header__item"
         :style="{
             width: width && width + 'px',
             flexShrink: width && 0,
-            textAlign,
+            justifyContent,
         }"
     >
         <slot>
@@ -15,16 +15,28 @@
 
 <script>
 import { defineComponent } from 'vue'
+import tableItemMixin, { tableItemProps } from '@/mixins/tableItemMixin'
 
 export default defineComponent({
     props: {
+        ...tableItemProps,
         label: String,
-        width: [String, Number],
-        textAlign: {
-            type: String,
-            default: 'left',
-            validator: (val) => ['left', 'center', 'right'].includes(val),
-        },
+    },
+
+    setup(props) {
+        const { justifyContent } = tableItemMixin(props)
+
+        return {
+            justifyContent,
+        }
     },
 })
 </script>
+
+<style lang="scss">
+.table-header__item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+</style>

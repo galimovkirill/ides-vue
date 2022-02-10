@@ -62,7 +62,7 @@ export default {
                 field: 'result',
                 label: 'Результат',
                 width: 100,
-                textAlign: 'center',
+                align: 'center',
             },
         ]
 
@@ -77,7 +77,7 @@ export default {
                 field: 'result',
                 label: 'Результат',
                 width: 100,
-                textAlign: 'center',
+                align: 'center',
             },
         ]
 

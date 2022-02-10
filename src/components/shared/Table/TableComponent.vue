@@ -16,7 +16,7 @@
                 :key="col.field"
                 :label="col.label"
                 :width="col.width"
-                :text-align="col.textAlign"
+                :align="col.align"
             />
 
             <slot name="header-end"></slot>
@@ -35,12 +35,14 @@
                 <slot name="row-start" :row="row"></slot>
 
                 <template v-for="col in columns" :key="col.field">
-                    <table-row-item
-                        :width="col.width"
-                        :text-align="col.textAlign"
+                    <slot
+                        :name="col.field"
+                        v-bind="{ getRowItemContent, col, row }"
                     >
-                        {{ getRowItemContent(col, row) }}
-                    </table-row-item>
+                        <table-row-item :width="col.width" :align="col.align">
+                            {{ getRowItemContent(col, row) }}
+                        </table-row-item>
+                    </slot>
                 </template>
 
                 <slot name="row-end"></slot>
@@ -72,7 +74,7 @@
 // 1) "field" - needed for data binding
 // 2) "label" - string to display in table's header
 // 3) "width" - column width
-// 4) "textAlign" - align text inside column
+// 4) "align" - align inside column
 
 import { defineComponent, ref } from 'vue'
 import TableHeaderItem from '@/components/shared/Table/TableHeaderItem.vue'
@@ -206,7 +208,7 @@ $horizontalPadding: 1rem;
     }
 
     .checkbox-cell {
-        width: 40px;
+        width: 30px;
         flex-shrink: 0;
     }
 }

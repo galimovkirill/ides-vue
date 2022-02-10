@@ -1,3 +1,4 @@
+// https://github.com/vbenjs/vite-plugin-svg-icons
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'

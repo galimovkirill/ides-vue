@@ -11,16 +11,32 @@
         </template>
     </base-heading>
 
-    <table-component :columns="tableCols" :data="tableData" checkable>
+    <table-component
+        :columns="tableCols"
+        :data="tableData"
+        checkable
+        class="library-table"
+    >
         <template #header-end>
-            <table-header-item
-                label="Действия"
-                width="100"
-                text-align="center"
-            />
+            <table-header-item label="Действия" width="100" align="center" />
         </template>
+
+        <template #title="{ getRowItemContent, col, row }">
+            <table-row-item class="title">
+                <svg-icon :name="row.type" />
+                {{ getRowItemContent(col, row) }}
+            </table-row-item>
+        </template>
+
+        <template #type="{ col, row }">
+            <table-row-item :width="col.width" :align="col.align">
+                <template v-if="row.type === 'folder'">Папка</template>
+                <template v-else-if="row.type === 'file'">Файл</template>
+            </table-row-item>
+        </template>
+
         <template #row-end>
-            <table-row-item width="100" text-align="center">
+            <table-row-item width="100" align="center">
                 Скачать
             </table-row-item>
         </template>
@@ -46,38 +62,32 @@ export default {
     setup() {
         const tableCols = [
             { field: 'title', label: 'Название' },
-            { field: 'type', label: 'Тип', width: 100, textAlign: 'center' },
+            { field: 'type', label: 'Тип', width: 100, align: 'center' },
             {
                 field: 'timestamp',
                 label: 'Дата загрузки',
                 width: 100,
-                textAlign: 'center',
+                align: 'center',
             },
-            { field: 'size', label: 'Размер', width: 100, textAlign: 'center' },
+            { field: 'size', label: 'Размер', width: 100, align: 'center' },
         ]
 
         const tableData = [
             {
                 title: 'Физико-математический факультет',
-                type: 'Папка',
+                type: 'folder',
                 timestamp: '17.11.2021',
             },
             {
-                title: 'Физико-математический факультет',
-                type: 'Папка',
+                title: 'Факультет прикладных информационных технологий',
+                type: 'file',
                 timestamp: '17.11.2021',
                 size: '20mb',
             },
             {
-                title: 'Физико-математический факультет',
-                type: 'Папка',
+                title: 'Факультет авиации, наземного транспорта и энергетики',
+                type: 'folder',
                 timestamp: '17.11.2021',
-            },
-            {
-                title: 'Физико-математический факультет',
-                type: 'Папка',
-                timestamp: '17.11.2021',
-                size: '116kb',
             },
         ]
 
@@ -88,3 +98,11 @@ export default {
     },
 }
 </script>
+
+<style lang="scss">
+.library-table {
+    .title .icon {
+        margin-right: 0.5rem;
+    }
+}
+</style>
