@@ -10,53 +10,43 @@
     </component>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, getCurrentInstance } from 'vue'
+<script setup lang="ts">
+import { computed, getCurrentInstance } from 'vue'
 
-export default defineComponent({
-    props: {
-        count: {
-            type: Number,
-            required: true,
-        },
-        type: {
-            type: String,
-            required: true,
-        },
-        icon: {
-            type: String,
-            required: true,
-        },
-        to: {
-            type: String,
-        },
+const props = defineProps({
+    count: {
+        type: Number,
+        required: true,
     },
-
-    setup(props) {
-        const instance = getCurrentInstance()
-        const tag = computed(() => {
-            if (props.to) {
-                return 'router-link'
-            }
-            return 'div'
-        })
-
-        const indexStyleClass = computed(() => {
-            const key: any = instance?.vnode.key
-            if (key % 2 === 0) {
-                return 'even'
-            }
-            return 'odd'
-        })
-
-        return {
-            count: props.count,
-            type: props.type,
-            icon: props.icon,
-            tag,
-            indexStyleClass,
-        }
+    type: {
+        type: String,
+        required: true,
     },
+    icon: {
+        type: String,
+        required: true,
+    },
+    to: {
+        type: String,
+    },
+})
+
+const VueInstance = getCurrentInstance()
+
+const tag = computed(() => {
+    if (props.to) {
+        return 'router-link'
+    }
+    return 'div'
+})
+
+const indexStyleClass = computed(() => {
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
+    const key: any = VueInstance?.vnode.key
+    if (key % 2 === 0) {
+        return 'even'
+    }
+    return 'odd'
 })
 </script>
 

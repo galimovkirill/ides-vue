@@ -43,59 +43,42 @@
     </base-wrapper>
 </template>
 
-<script>
+<script setup lang="ts">
 import CardStatistic from '@/components/shared/Card/CardStatistic.vue'
 import TableComponent from '@/components/shared/Table/TableComponent.vue'
 import BaseWrapper from '@/components/shared/BaseWrapper.vue'
 
-export default {
-    components: {
-        BaseWrapper,
-        TableComponent,
-        CardStatistic,
+const columns_1 = [
+    { field: 'fullName', label: 'ФИО' },
+    {
+        field: 'result',
+        label: 'Результат',
+        width: 100,
+        align: 'center',
     },
+]
 
-    setup() {
-        const columns_1 = [
-            { field: 'fullName', label: 'ФИО' },
-            {
-                field: 'result',
-                label: 'Результат',
-                width: 100,
-                align: 'center',
-            },
-        ]
+const data_1 = [
+    { fullName: 'Петрова Анна Павловна', result: 6 },
+    { fullName: 'Тимофеев Алексей Николаевич', result: 'н/д' },
+]
 
-        const data_1 = [
-            { fullName: 'Петрова Анна Павловна', result: 6 },
-            { fullName: 'Тимофеев Алексей Николаевич', result: 'н/д' },
-        ]
-
-        const columns_2 = [
-            { field: 'fullName', label: 'ФИО' },
-            {
-                field: 'result',
-                label: 'Результат',
-                width: 100,
-                align: 'center',
-            },
-        ]
-
-        const data_2 = [
-            { fullName: 'Иванов Алексей Петрович', result: 6 },
-            { fullName: 'Хайрудтинов Ильнар Назипович', result: 'н/д' },
-            { fullName: 'Насридтинов Даниил Аркадьевич', result: 'н/д' },
-            { fullName: 'Михайлов Михаил Михайлович', result: 'н/д' },
-        ]
-
-        return {
-            columns_1,
-            data_1,
-            columns_2,
-            data_2,
-        }
+const columns_2 = [
+    { field: 'fullName', label: 'ФИО' },
+    {
+        field: 'result',
+        label: 'Результат',
+        width: 100,
+        align: 'center',
     },
-}
+]
+
+const data_2 = [
+    { fullName: 'Иванов Алексей Петрович', result: 6 },
+    { fullName: 'Хайрудтинов Ильнар Назипович', result: 'н/д' },
+    { fullName: 'Насридтинов Даниил Аркадьевич', result: 'н/д' },
+    { fullName: 'Михайлов Михаил Михайлович', result: 'н/д' },
+]
 </script>
 
 <style lang="scss">

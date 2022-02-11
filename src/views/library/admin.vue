@@ -43,60 +43,43 @@
     </table-component>
 </template>
 
-<script>
+<script lang="ts" setup>
 import BaseHeading from '@/components/shared/BaseHeading.vue'
 import BaseButton from '@/components/shared/BaseButton.vue'
 import TableComponent from '@/components/shared/Table/TableComponent.vue'
 import TableRowItem from '@/components/shared/Table/TableRowItem.vue'
 import TableHeaderItem from '@/components/shared/Table/TableHeaderItem.vue'
 
-export default {
-    components: {
-        BaseHeading,
-        BaseButton,
-        TableComponent,
-        TableRowItem,
-        TableHeaderItem,
+const tableCols = [
+    { field: 'title', label: 'Название' },
+    { field: 'type', label: 'Тип', width: 100, align: 'center' },
+    {
+        field: 'timestamp',
+        label: 'Дата загрузки',
+        width: 100,
+        align: 'center',
     },
+    { field: 'size', label: 'Размер', width: 100, align: 'center' },
+]
 
-    setup() {
-        const tableCols = [
-            { field: 'title', label: 'Название' },
-            { field: 'type', label: 'Тип', width: 100, align: 'center' },
-            {
-                field: 'timestamp',
-                label: 'Дата загрузки',
-                width: 100,
-                align: 'center',
-            },
-            { field: 'size', label: 'Размер', width: 100, align: 'center' },
-        ]
-
-        const tableData = [
-            {
-                title: 'Физико-математический факультет',
-                type: 'folder',
-                timestamp: '17.11.2021',
-            },
-            {
-                title: 'Факультет прикладных информационных технологий',
-                type: 'file',
-                timestamp: '17.11.2021',
-                size: '20mb',
-            },
-            {
-                title: 'Факультет авиации, наземного транспорта и энергетики',
-                type: 'folder',
-                timestamp: '17.11.2021',
-            },
-        ]
-
-        return {
-            tableCols,
-            tableData,
-        }
+const tableData = [
+    {
+        title: 'Физико-математический факультет',
+        type: 'folder',
+        timestamp: '17.11.2021',
     },
-}
+    {
+        title: 'Факультет прикладных информационных технологий',
+        type: 'file',
+        timestamp: '17.11.2021',
+        size: '20mb',
+    },
+    {
+        title: 'Факультет авиации, наземного транспорта и энергетики',
+        type: 'folder',
+        timestamp: '17.11.2021',
+    },
+]
 </script>
 
 <style lang="scss">

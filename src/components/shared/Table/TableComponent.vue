@@ -51,15 +51,7 @@
     </div>
 </template>
 
-<script>
-// Setup your data for building this table. You need create an object for "columns" prop, which looks like this:
-// const columns = [
-//     { field: 'id', label: 'ID', width: 60 },
-//     { field: 'fullName', label: 'ФИО' },
-//     { field: 'score', label: 'Баллы' },
-//     { field: 'mark', label: 'Оценка' },
-// ]
-
+<script setup lang="ts">
 // Pass your data as "data" prop. The order of object's keys is not important. Example:
 // const data = [
 //     { mark: 12, id: 1, fullName: 'Кирилл Галимов' },
@@ -67,110 +59,88 @@
 //     { mark: 22, fullName: 'Людмила Калягина', id: 3 },
 //]
 
-// Keys of your data's objects must be the same as column's object "field".
+// Keys of your data's objects must be the same as column's "field" property.
 
-// ==================
-// Columns attributes:
-// 1) "field" - needed for data binding
-// 2) "label" - string to display in table's header
-// 3) "width" - column width
-// 4) "align" - align inside column
-
-import { defineComponent, ref } from 'vue'
+import { ref } from 'vue'
+import { ITableRow, ITableCol } from '@/types/tableElements'
 import TableHeaderItem from '@/components/shared/Table/TableHeaderItem.vue'
 import TableRowItem from '@/components/shared/Table/TableRowItem.vue'
 
-export default defineComponent({
-    components: { TableRowItem, TableHeaderItem },
-    props: {
-        columns: {
-            type: Array,
-            default: () => [],
-        },
-        data: {
-            type: Array,
-            default: () => [],
-        },
-        checkable: {
-            type: Boolean,
-            default: false,
-        },
-        checkedRows: {
-            type: Array,
-            default: () => [],
-        },
-        noBorder: {
-            type: Boolean,
-            default: false,
-        },
+const props = defineProps({
+    columns: {
+        type: Array as () => Array<ITableCol>,
+        default: () => [],
     },
-
-    emits: ['update:checkedRows'],
-
-    setup(props, { emit }) {
-        let localCheckedRows = ref([])
-
-        /**
-         * Return content based on current cell's field prop
-         */
-        const getRowItemContent = (col, row) => row[col.field]
-
-        /**
-         * Get index of row inside checkedRows array
-         */
-        const getRowIndex = (row) => localCheckedRows.value.indexOf(row)
-
-        const isRowChecked = (row) => getRowIndex(row) !== -1
-
-        /**
-         * Compare initial data and checked rows
-         */
-        const isAllRowsChecked = () => {
-            const { data } = props
-            return (
-                localCheckedRows.value.length > 0 &&
-                data.length === localCheckedRows.value.length &&
-                data.join('') === localCheckedRows.value.join('')
-            )
-        }
-
-        /**
-         * Remove row from checkedRows if it is already checked
-         */
-        const removeCheckedRow = (row) => {
-            const index = getRowIndex(row)
-            index !== -1 && localCheckedRows.value.splice(index, 1)
-        }
-
-        /**
-         * Toggle checkbox and save its state inside checkedRows array
-         */
-        const checkRow = (row) => {
-            isRowChecked(row)
-                ? removeCheckedRow(row)
-                : localCheckedRows.value.push(row)
-
-            emit('update:checkedRows', localCheckedRows.value)
-        }
-
-        const checkAllRows = () => {
-            isAllRowsChecked()
-                ? (localCheckedRows.value = [])
-                : (localCheckedRows.value = [...props.data])
-
-            emit('update:checkedRows', localCheckedRows.value)
-        }
-
-        return {
-            localCheckedRows,
-            getRowItemContent,
-            isAllRowsChecked,
-            isRowChecked,
-            checkRow,
-            checkAllRows,
-        }
+    data: {
+        type: Array as () => Array<ITableRow>,
+        default: () => [],
+    },
+    checkable: {
+        type: Boolean,
+        default: false,
+    },
+    checkedRows: {
+        type: Array,
+        default: () => [],
+    },
+    noBorder: {
+        type: Boolean,
+        default: false,
     },
 })
+
+const emit = defineEmits(['update:checkedRows'])
+
+let localCheckedRows = ref<Array<ITableRow>>([])
+
+/**
+ * Return content based on current cell's field prop
+ */
+const getRowItemContent = (col: ITableCol, row: ITableRow) => row[col.field]
+
+/**
+ * Get index of row inside checkedRows array
+ */
+const getRowIndex = (row: ITableRow) => localCheckedRows.value.indexOf(row)
+
+const isRowChecked = (row: ITableRow) => getRowIndex(row) !== -1
+
+/**
+ * Compare initial data and checked rows
+ */
+const isAllRowsChecked = () => {
+    const { data } = props
+    return (
+        localCheckedRows.value.length > 0 &&
+        data.length === localCheckedRows.value.length &&
+        data.join('') === localCheckedRows.value.join('')
+    )
+}
+
+/**
+ * Remove row from checkedRows if it is already checked
+ */
+const removeCheckedRow = (row: ITableRow) => {
+    const index = getRowIndex(row)
+    index !== -1 && localCheckedRows.value.splice(index, 1)
+}
+
+/**
+ * Toggle checkbox and save its state inside checkedRows array
+ */
+const checkRow = (row: ITableRow) => {
+    isRowChecked(row) ? removeCheckedRow(row) : localCheckedRows.value.push(row)
+
+    emit('update:checkedRows', localCheckedRows.value)
+}
+
+const checkAllRows = () => {
+    isAllRowsChecked()
+        ? (localCheckedRows.value = [])
+        : (localCheckedRows.value = [...props.data])
+
+    emit('update:checkedRows', localCheckedRows.value)
+}
 </script>
 
 <style lang="scss">

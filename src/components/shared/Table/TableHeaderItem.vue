@@ -1,36 +1,20 @@
 <template>
-    <div
-        class="table-header__item"
-        :style="{
-            width: width && width + 'px',
-            flexShrink: width && 0,
-            justifyContent,
-        }"
-    >
+    <div class="table-header__item" :style="styles">
         <slot>
             {{ label }}
         </slot>
     </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import tableItemMixin, { tableItemProps } from '@/mixins/tableItemMixin'
 
-export default defineComponent({
-    props: {
-        ...tableItemProps,
-        label: String,
-    },
-
-    setup(props) {
-        const { justifyContent } = tableItemMixin(props)
-
-        return {
-            justifyContent,
-        }
-    },
+const props = defineProps({
+    ...tableItemProps,
+    label: String,
 })
+
+const { styles } = tableItemMixin(props)
 </script>
 
 <style lang="scss">

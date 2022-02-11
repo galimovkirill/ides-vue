@@ -7,6 +7,9 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@rushstack/eslint-patch": "^1.1.0",
+        "@vue/eslint-config-prettier": "^7.0.0",
+        "@vue/eslint-config-typescript": "^10.0.0",
         "fast-glob": "^3.2.11",
         "vue": "^3.2.25",
         "vue-router": "^4.0.12",

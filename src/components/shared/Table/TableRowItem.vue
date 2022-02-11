@@ -1,33 +1,17 @@
 <template>
-    <div
-        class="table-row__item"
-        :style="{
-            width: width && width + 'px',
-            flexShrink: width && 0,
-            justifyContent,
-        }"
-    >
+    <div class="table-row__item" :style="styles">
         <slot></slot>
     </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import tableItemMixin, { tableItemProps } from '@/mixins/tableItemMixin'
 
-export default defineComponent({
-    props: {
-        ...tableItemProps,
-    },
-
-    setup(props) {
-        const { justifyContent } = tableItemMixin(props)
-
-        return {
-            justifyContent,
-        }
-    },
+const props = defineProps({
+    ...tableItemProps,
 })
+
+const { styles } = tableItemMixin(props)
 </script>
 
 <style lang="scss">

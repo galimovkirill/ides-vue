@@ -13,54 +13,44 @@
     </component>
 </template>
 
-<script>
+<script setup lang="ts">
 import { computed } from 'vue'
 
-export default {
-    props: {
-        tag: {
-            type: String,
-            default: 'button',
-        },
-
-        to: {
-            type: String,
-            default: null,
-        },
-
-        disabled: {
-            type: Boolean,
-            default: false,
-        },
-
-        type: {
-            type: String,
-            default: 'primary',
-            validator: (value) => ['primary', 'secondary'].includes(value),
-        },
+const props = defineProps({
+    tag: {
+        type: String,
+        default: 'button',
     },
 
-    setup(props) {
-        const computedTag = computed(() =>
-            props.to ? 'router-link' : 'button'
-        )
-        const attrs = computed(() => {
-            return {
-                ...(props.to && { to: props.to }),
-                disabled: props.disabled,
-            }
-        })
-        const typeClass = computed(() => {
-            return `button--${props.type}`
-        })
-
-        return {
-            computedTag,
-            attrs,
-            typeClass,
-        }
+    to: {
+        type: String,
+        default: null,
     },
-}
+
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
+
+    type: {
+        type: String,
+        default: 'primary',
+        validator: (t: string) => ['primary', 'secondary'].includes(t),
+    },
+})
+
+const computedTag = computed(() => (props.to ? 'router-link' : 'button'))
+
+const attrs = computed(() => {
+    return {
+        ...(props.to && { to: props.to }),
+        disabled: props.disabled,
+    }
+})
+
+const typeClass = computed(() => {
+    return `button--${props.type}`
+})
 </script>
 
 <style lang="scss">
