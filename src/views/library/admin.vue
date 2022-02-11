@@ -7,7 +7,9 @@
         <template #right>
             <span>4 файла</span>
             <base-button>Добавить</base-button>
-            <base-button>Новая папка</base-button>
+            <base-button @click="isAddFolderModalShown = true">
+                Новая папка
+            </base-button>
         </template>
     </base-heading>
 
@@ -41,6 +43,21 @@
             </table-row-item>
         </template>
     </table-component>
+
+    <teleport to="body">
+        <modal-component
+            v-if="isAddFolderModalShown"
+            title="Добавить папку"
+            @close="isAddFolderModalShown = false"
+        >
+            <div>Тело модалки</div>
+
+            <template #footer>
+                <base-button type="secondary">Отмена</base-button>
+                <base-button>Добавить</base-button>
+            </template>
+        </modal-component>
+    </teleport>
 </template>
 
 <script lang="ts" setup>
@@ -49,6 +66,10 @@ import BaseButton from '@/components/shared/BaseButton.vue'
 import TableComponent from '@/components/shared/Table/TableComponent.vue'
 import TableRowItem from '@/components/shared/Table/TableRowItem.vue'
 import TableHeaderItem from '@/components/shared/Table/TableHeaderItem.vue'
+import ModalComponent from '@/components/shared/Modal/ModalComponent.vue'
+import { ref } from '@vue/reactivity'
+
+const isAddFolderModalShown = ref(false)
 
 const tableCols = [
     { field: 'title', label: 'Название' },
