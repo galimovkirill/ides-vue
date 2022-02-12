@@ -50,7 +50,9 @@
             title="Добавить папку"
             @close="isAddFolderModalShown = false"
         >
-            <div>Тело модалки</div>
+            <div>
+                <base-input label="Название" />
+            </div>
 
             <template #footer>
                 <base-button type="secondary">Отмена</base-button>
@@ -68,6 +70,7 @@ import TableRowItem from '@/components/shared/Table/TableRowItem.vue'
 import TableHeaderItem from '@/components/shared/Table/TableHeaderItem.vue'
 import ModalComponent from '@/components/shared/Modal/ModalComponent.vue'
 import { ref } from '@vue/reactivity'
+import BaseInput from '@/components/shared/BaseInput.vue'
 
 const isAddFolderModalShown = ref(false)
 
