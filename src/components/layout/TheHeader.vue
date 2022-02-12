@@ -55,8 +55,8 @@
     padding: 0 2rem;
 
     height: var(--ides-header-height);
-    background: var(--clr-theme-layout);
-    border-bottom: 1px solid var(--clr-theme-border);
+    background: var(--color-theme-layout);
+    border-bottom: 1px solid var(--color-theme-border);
 
     &-logo {
         display: flex;
@@ -91,7 +91,7 @@
 
         svg {
             display: flex;
-            color: var(--clr-primary);
+            color: var(--color-primary);
             width: 1.5rem;
             height: 1.5rem;
             transition: $transition;
@@ -105,7 +105,7 @@
                 top: 0;
                 width: 10px;
                 height: 10px;
-                background-color: var(--clr-danger);
+                background-color: var(--color-danger);
                 display: block;
                 border-radius: 100%;
                 transition: $transition;
@@ -114,10 +114,7 @@
 
         &:hover {
             svg {
-                color: var(--clr-primary-weak);
-            }
-            &::after {
-                background-color: var(--clr-danger-weak);
+                color: var(--color-primary-hover);
             }
         }
     }
@@ -147,11 +144,11 @@
         svg {
             width: 1.5rem;
             height: 1.5rem;
-            color: var(--clr-primary);
+            color: var(--color-primary);
             transition: $transition;
 
             &:hover {
-                color: var(--clr-primary-weak);
+                color: var(--color-primary-hover);
             }
         }
     }

@@ -147,8 +147,8 @@ const checkAllRows = () => {
 $horizontalPadding: 1rem;
 
 .table {
-    background: var(--clr-theme-layout);
-    border: 1px solid var(--clr-theme-border);
+    background: var(--color-theme-layout);
+    border: 1px solid var(--color-theme-border);
     border-radius: var(--ides-border-radius);
 
     &.no-border {
@@ -164,7 +164,7 @@ $horizontalPadding: 1rem;
         display: flex;
         align-items: center;
         height: 40px;
-        background: var(--clr-primary-weak);
+        background: var(--color-secondary);
         padding: 0 $horizontalPadding;
         font-size: 13px;
     }

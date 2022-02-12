@@ -35,8 +35,8 @@ const navigation = computed(() => sidebarNavigation[role])
     height: 100%;
     top: calc(var(--ides-header-height) + 1px);
     width: var(--ides-sidebar-width);
-    background: var(--clr-theme-layout);
-    border-right: 1px solid var(--clr-theme-border);
+    background: var(--color-theme-layout);
+    border-right: 1px solid var(--color-theme-border);
 
     &-navigation {
         display: flex;
@@ -58,12 +58,12 @@ const navigation = computed(() => sidebarNavigation[role])
         }
 
         &.active {
-            background: var(--clr-primary) !important;
+            background: var(--color-primary) !important;
             color: #fff;
         }
 
         &:hover {
-            background: var(--clr-primary-weak);
+            background: var(--color-button-secondary-bg);
         }
     }
 }

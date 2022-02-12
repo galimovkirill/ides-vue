@@ -1,0 +1,21 @@
+$variables: (
+    --color-theme-layout: #fff,
+    --color-theme-background: #f9f9f9,
+    --color-theme-border: #dee6f3,
+    --color-theme-border-focus: #b4c2d9,
+    --color-text: #050c42,
+    --color-text-09: #4d59a1,
+    --color-text-01: #acafc1,
+    --color-primary: #0057ff,
+    --color-primary-hover: #0045cc,
+    --color-secondary: #dee6f3,
+    --color-danger: #fc346a,
+    --color-danger-bg: #fed6e1,
+    --color-button-secondary-bg: #f2f4fb,
+);
+
+:root {
+    @each $key, $value in $variables {
+        #{$key}: $value;
+    }
+}

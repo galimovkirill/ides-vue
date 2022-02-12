@@ -24,21 +24,21 @@ const COMPONENT_UID = VueInstance?.uid?.toString()
 <style lang="scss">
 .input {
     height: 3rem;
-    background: var(--clr-theme-background);
-    border: 1px solid var(--clr-theme-border);
+    background: var(--color-theme-background);
+    border: 1px solid var(--color-theme-border);
     border-radius: var(--ides-border-radius);
     width: 100%;
     padding: 0 1.25rem;
 
     &:focus {
         outline: none;
-        // border-color: var(--clr-primary-weak);
+        border-color: var(--color-theme-border-focus);
     }
 
     &-label {
         font-size: 14px;
         font-weight: 600;
-        color: var(--clr-text-weak);
+        color: var(--color-text-01);
         margin-bottom: 8px;
     }
 

@@ -1,0 +1,11 @@
+$variables: (
+    --ides-header-height: 4rem,
+    --ides-sidebar-width: 13rem,
+    --ides-border-radius: 5px,
+);
+
+:root {
+    @each $key, $value in $variables {
+        #{$key}: $value;
+    }
+}

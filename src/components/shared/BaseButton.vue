@@ -72,15 +72,15 @@ const typeClass = computed(() => {
 
     &--primary {
         color: #fff;
-        background: var(--clr-primary);
+        background: var(--color-primary);
         &:hover {
-            background: var(--clr-primary-strong);
+            background: var(--color-primary-hover);
         }
     }
 
     &--secondary {
-        color: var(--clr-primary-strong);
-        background: var(--clr-primary-weak);
+        color: var(--color-text-09);
+        background: var(--color-button-secondary-bg);
 
         &:hover {
             background: var(--clr-primary);

@@ -12,13 +12,13 @@
 
 <style lang="scss">
 .wrapper {
-    background: var(--clr-theme-layout);
-    border: 1px solid var(--clr-theme-border);
+    background: var(--color-theme-layout);
+    border: 1px solid var(--color-theme-border);
     border-radius: var(--ides-border-radius);
 
     .wrapper-header {
         padding: 1rem 1.5rem;
-        border-bottom: 1px solid var(--clr-theme-border);
+        border-bottom: 1px solid var(--color-theme-border);
     }
 
     .wrapper-body {

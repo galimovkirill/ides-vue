@@ -52,8 +52,8 @@ onUnmounted(() => document.body.classList.remove('modal-shown'))
     min-width: 300px;
     width: 100%;
     box-shadow: 0 1px 15px 0 rgb(155 155 155 / 25%);
-    background: var(--clr-theme-layout);
-    border: 1px solid var(--clr-theme-border);
+    background: var(--color-theme-layout);
+    border: 1px solid var(--color-theme-border);
     border-radius: var(--ides-border-radius);
 
     &-wrapper {
@@ -90,7 +90,7 @@ onUnmounted(() => document.body.classList.remove('modal-shown'))
         top: 0;
         width: 100%;
         height: 100%;
-        background: var(--clr-theme-layout);
+        background: var(--color-theme-layout);
         opacity: 0.45;
     }
 }

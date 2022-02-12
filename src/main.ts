@@ -6,7 +6,7 @@ import { store } from '@/store'
 import router from '@/router'
 
 import 'virtual:svg-icons-register'
-import '@/assets/styles/settings.scss'
+import '@/assets/styles/css-variables/_index.scss'
 import '@/assets/styles/main.scss'
 
 app.use(store)

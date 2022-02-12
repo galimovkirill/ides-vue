@@ -55,8 +55,8 @@ const indexStyleClass = computed(() => {
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
-    background: var(--clr-theme-layout);
-    border: 1px solid var(--clr-theme-border);
+    background: var(--color-theme-layout);
+    border: 1px solid var(--color-theme-border);
     border-radius: var(--ides-border-radius);
     padding: 1.5rem;
     transition: $transition;
@@ -72,7 +72,7 @@ const indexStyleClass = computed(() => {
     }
 
     &__type {
-        color: var(--clr-text-weak);
+        color: var(--color-text-01);
         margin-top: 1rem;
     }
 
@@ -98,10 +98,10 @@ const indexStyleClass = computed(() => {
 }
 
 .stats-card.odd .stats-card__icon {
-    background: var(--clr-primary-strong);
+    background: var(--color-primary-hover);
 }
 
 .stats-card.even .stats-card__icon {
-    background: var(--clr-primary);
+    background: var(--color-primary);
 }
 </style>
