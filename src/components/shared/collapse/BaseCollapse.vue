@@ -55,6 +55,8 @@ const isCollapseOpened = ref(false)
             padding: 1rem;
             background: var(--color-theme-layout);
             border: 1px solid var(--color-theme-border);
+            border-bottom-left-radius: var(--ides-border-radius);
+            border-bottom-right-radius: var(--ides-border-radius);
         }
     }
 }

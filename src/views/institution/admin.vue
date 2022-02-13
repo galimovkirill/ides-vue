@@ -1,11 +1,21 @@
 <template>
-    <BaseCollapse v-for="collapse in 4" :key="collapse">
+    <BaseCollapse>
         <div class="institution-collapse">
-            <BaseInput />
+            <BaseInput
+                v-model="searchQuery"
+                placeholder="Поиск"
+                start-icon="search"
+            />
             <BaseButton>Добавить</BaseButton>
         </div>
 
-        <BaseTable :columns="columns" :data="data" checkable />
+        <BaseTable
+            :columns="columns"
+            :data="data"
+            checkable
+            :filter-query="searchQuery"
+            :filter-fields="['fullName', 'post', 'age', 'experience']"
+        />
     </BaseCollapse>
 </template>
 
@@ -14,24 +24,49 @@ import BaseCollapse from '@/components/shared/collapse/BaseCollapse.vue'
 import BaseInput from '@/components/shared/input/BaseInput.vue'
 import BaseButton from '@/components/shared/button/BaseButton.vue'
 import BaseTable from '@/components/shared/table/BaseTable.vue'
+import { ref } from 'vue'
+
+const searchQuery = ref('')
 
 const columns = [
     { field: 'fullName', label: 'ФИО' },
     { field: 'post', label: 'Должность' },
+    { field: 'age', label: 'Возраст', width: 100, align: 'center' },
+    { field: 'experience', label: 'Опыт работы', width: 100, align: 'center' },
 ]
 
-const data = [
-    { fullName: 'Иванов Алексей Петрович', post: 'Ректор' },
-    { fullName: 'Хайрудтинов Ильнар Назипович', post: 'Президент' },
-    {
-        fullName: 'Насридтинов Даниил Аркадьевич',
-        post: 'Проректор по образовательной деятельности',
-    },
-    {
-        fullName: 'Михайлов Михаил Михайлович',
-        post: 'Проректор по научной и инновационной деятельности',
-    },
-]
+let data: any[] = []
+
+for (let i = 0; i < 10; i++) {
+    const tmp = [
+        {
+            fullName: 'Иванов Алексей Петрович',
+            post: 'Ректор',
+            age: 26,
+            experience: 4,
+        },
+        {
+            fullName: 'Хайрудтинов Ильнар Назипович',
+            post: 'Президент',
+            age: 48,
+            experience: 20,
+        },
+        {
+            fullName: 'Насридтинов Даниил Аркадьевич',
+            post: 'Проректор по образовательной деятельности',
+            age: 59,
+            experience: 30,
+        },
+        {
+            fullName: 'Михайлов Михаил Михайлович',
+            post: 'Проректор по научной и инновационной деятельности',
+            age: 20,
+            experience: 1,
+        },
+    ]
+
+    data = [...data, ...tmp]
+}
 </script>
 
 <style lang="scss">
@@ -43,7 +78,7 @@ const data = [
         margin: 0.5rem;
     }
 
-    .input-wrapper {
+    .input {
         width: 100%;
     }
 }

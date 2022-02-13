@@ -1,9 +1,25 @@
 <template>
-    <div class="input-wrapper">
+    <div class="input">
         <label v-if="label" :for="COMPONENT_UID" class="input-label">
             {{ label }}
         </label>
-        <input :id="COMPONENT_UID" type="text" class="input" />
+
+        <div class="input-wrapper">
+            <svg-icon
+                v-if="startIcon"
+                :name="startIcon"
+                class="input__start-icon"
+            />
+            <input
+                :id="COMPONENT_UID"
+                type="text"
+                :placeholder="placeholder"
+                class="input-element"
+                :class="{ 'has-start-icon': startIcon }"
+                :value="modelValue"
+                @input="updateValue"
+            />
+        </div>
     </div>
 </template>
 
@@ -15,24 +31,50 @@ const props = defineProps({
         type: String || null,
         default: null,
     },
+    placeholder: {
+        type: String,
+        default: null,
+    },
+    startIcon: {
+        type: String,
+        default: null,
+    },
+    modelValue: String,
 })
+
+const emit = defineEmits(['update:modelValue'])
 
 const VueInstance = getCurrentInstance()
 const COMPONENT_UID = VueInstance?.uid?.toString()
+
+const updateValue = (event: Event) => {
+    // TODO: Запретить ввод пробелов при пустом инпуте
+    emit('update:modelValue', (event.target as HTMLInputElement).value)
+}
 </script>
 
 <style lang="scss">
 .input {
-    height: 3rem;
-    background: var(--color-theme-background);
-    border: 1px solid var(--color-theme-border);
-    border-radius: var(--ides-border-radius);
-    width: 100%;
-    padding: 0 1.25rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 
-    &:focus {
-        outline: none;
-        border-color: var(--color-theme-border-focus);
+    .input-element {
+        height: 3rem;
+        background: var(--color-theme-background);
+        border-radius: var(--ides-border-radius);
+        padding: 0 1.25rem;
+        border: 1px solid var(--color-theme-border);
+        width: 100%;
+
+        &:focus {
+            outline: none;
+            border-color: var(--color-theme-border-focus);
+        }
+
+        &.has-start-icon {
+            padding: 0 1.25rem 0 4rem;
+        }
     }
 
     &-label {
@@ -42,9 +84,13 @@ const COMPONENT_UID = VueInstance?.uid?.toString()
         margin-bottom: 8px;
     }
 
-    &-wrapper {
-        display: flex;
-        flex-direction: column;
+    &__start-icon {
+        pointer-events: none;
+        position: absolute;
+        left: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(172, 175, 193, 1);
     }
 }
 </style>

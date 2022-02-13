@@ -23,7 +23,11 @@
         </div>
 
         <div class="table-body">
-            <div v-for="(row, rowIdx) in data" :key="rowIdx" class="table-row">
+            <div
+                v-for="(row, rowIdx) in outputData"
+                :key="rowIdx"
+                class="table-row"
+            >
                 <div v-if="checkable" class="checkbox-cell">
                     <input
                         type="checkbox"
@@ -61,7 +65,7 @@
 
 // Keys of your data's objects must be the same as column's "field" property.
 
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { ITableRow, ITableCol } from '@/types/tableElements'
 import BaseTableHeaderItem from '@/components/shared/table/BaseTableHeaderItem.vue'
 import BaseTableRowItem from '@/components/shared/table/BaseTableRowItem.vue'
@@ -86,6 +90,14 @@ const props = defineProps({
     noBorder: {
         type: Boolean,
         default: false,
+    },
+    filterQuery: {
+        type: String,
+        default: null,
+    },
+    filterFields: {
+        type: Array as () => string[],
+        default: null,
     },
 })
 
@@ -141,6 +153,31 @@ const checkAllRows = () => {
 
     emit('update:checkedRows', localCheckedRows.value)
 }
+
+const outputData = computed(() => {
+    const { filterQuery, filterFields, data } = props
+
+    // TODO: Add throttle (ex. lodash lib)
+    if (filterQuery) {
+        let filteredData: any[] = []
+
+        filterFields.forEach((field) => {
+            const filteredBySingleField = data.filter((item) => {
+                return String(item[field])
+                    .toUpperCase()
+                    .includes(filterQuery.toUpperCase())
+            })
+
+            filteredData = [
+                ...new Set([...filteredData, ...filteredBySingleField]),
+            ]
+        })
+
+        return filteredData
+    }
+
+    return data
+})
 </script>
 
 <style lang="scss">

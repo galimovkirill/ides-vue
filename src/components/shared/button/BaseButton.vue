@@ -83,7 +83,7 @@ const typeClass = computed(() => {
         background: var(--color-button-secondary-bg);
 
         &:hover {
-            background: var(--clr-primary);
+            background: var(--color-primary);
             color: #fff;
         }
     }
