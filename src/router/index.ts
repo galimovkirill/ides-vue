@@ -15,7 +15,7 @@ const routes = [
     {
         path: '/institution',
         name: 'institution',
-        component: TmpComponent,
+        component: () => import(`../views/institution/${userRole.value}.vue`),
     },
     {
         path: '/schedule',
@@ -25,11 +25,6 @@ const routes = [
     {
         path: '/chats',
         name: 'chats',
-        component: TmpComponent,
-    },
-    {
-        path: '/institution',
-        name: 'institution',
         component: TmpComponent,
     },
     {

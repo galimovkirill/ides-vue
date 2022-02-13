@@ -1,76 +1,76 @@
 <template>
-    <base-heading>
+    <BaseHeading>
         <template #left>
             <h2>База знаний</h2>
         </template>
 
         <template #right>
             <span>4 файла</span>
-            <base-button>Добавить</base-button>
-            <base-button @click="isAddFolderModalShown = true">
+            <BaseButton>Добавить</BaseButton>
+            <BaseButton @click="isAddFolderModalShown = true">
                 Новая папка
-            </base-button>
+            </BaseButton>
         </template>
-    </base-heading>
+    </BaseHeading>
 
-    <table-component
+    <BaseTable
         :columns="tableCols"
         :data="tableData"
         checkable
         class="library-table"
     >
         <template #header-end>
-            <table-header-item label="Действия" width="100" align="center" />
+            <BaseTableHeaderItem label="Действия" width="100" align="center" />
         </template>
 
         <template #title="{ getRowItemContent, col, row }">
-            <table-row-item class="title">
+            <BaseTableRowItem class="title">
                 <svg-icon :name="row.type" />
                 {{ getRowItemContent(col, row) }}
-            </table-row-item>
+            </BaseTableRowItem>
         </template>
 
         <template #type="{ col, row }">
-            <table-row-item :width="col.width" :align="col.align">
+            <BaseTableRowItem :width="col.width" :align="col.align">
                 <template v-if="row.type === 'folder'">Папка</template>
                 <template v-else-if="row.type === 'file'">Файл</template>
-            </table-row-item>
+            </BaseTableRowItem>
         </template>
 
         <template #row-end>
-            <table-row-item width="100" align="center">
+            <BaseTableRowItem width="100" align="center">
                 Скачать
-            </table-row-item>
+            </BaseTableRowItem>
         </template>
-    </table-component>
+    </BaseTable>
 
     <teleport to="body">
-        <modal-component
+        <BaseModal
             v-if="isAddFolderModalShown"
             title="Добавить папку"
             @close="isAddFolderModalShown = false"
         >
             <div>
-                <base-input label="Название" />
+                <BaseInput label="Название" />
             </div>
 
             <template #footer>
-                <base-button type="secondary">Отмена</base-button>
-                <base-button>Добавить</base-button>
+                <BaseButton type="secondary">Отмена</BaseButton>
+                <BaseButton>Добавить</BaseButton>
             </template>
-        </modal-component>
+        </BaseModal>
     </teleport>
 </template>
 
 <script lang="ts" setup>
 import BaseHeading from '@/components/shared/BaseHeading.vue'
-import BaseButton from '@/components/shared/BaseButton.vue'
-import TableComponent from '@/components/shared/Table/TableComponent.vue'
-import TableRowItem from '@/components/shared/Table/TableRowItem.vue'
-import TableHeaderItem from '@/components/shared/Table/TableHeaderItem.vue'
-import ModalComponent from '@/components/shared/Modal/ModalComponent.vue'
+import BaseButton from '@/components/shared/button/BaseButton.vue'
+import BaseInput from '@/components/shared/input/BaseInput.vue'
+import BaseTable from '@/components/shared/table/BaseTable.vue'
+import BaseTableRowItem from '@/components/shared/table/BaseTableRowItem.vue'
+import BaseTableHeaderItem from '@/components/shared/table/BaseTableHeaderItem.vue'
+import BaseModal from '@/components/shared/modal/BaseModal.vue'
 import { ref } from '@vue/reactivity'
-import BaseInput from '@/components/shared/BaseInput.vue'
 
 const isAddFolderModalShown = ref(false)
 

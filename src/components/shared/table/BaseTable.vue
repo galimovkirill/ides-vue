@@ -11,7 +11,7 @@
 
             <slot name="header-start"></slot>
 
-            <table-header-item
+            <BaseTableHeaderItem
                 v-for="col in columns"
                 :key="col.field"
                 :label="col.label"
@@ -39,9 +39,9 @@
                         :name="col.field"
                         v-bind="{ getRowItemContent, col, row }"
                     >
-                        <table-row-item :width="col.width" :align="col.align">
+                        <BaseTableRowItem :width="col.width" :align="col.align">
                             {{ getRowItemContent(col, row) }}
-                        </table-row-item>
+                        </BaseTableRowItem>
                     </slot>
                 </template>
 
@@ -63,8 +63,8 @@
 
 import { ref } from 'vue'
 import { ITableRow, ITableCol } from '@/types/tableElements'
-import TableHeaderItem from '@/components/shared/Table/TableHeaderItem.vue'
-import TableRowItem from '@/components/shared/Table/TableRowItem.vue'
+import BaseTableHeaderItem from '@/components/shared/table/BaseTableHeaderItem.vue'
+import BaseTableRowItem from '@/components/shared/table/BaseTableRowItem.vue'
 
 const props = defineProps({
     columns: {

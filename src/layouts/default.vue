@@ -1,7 +1,7 @@
 <template>
-    <the-header />
+    <TheHeader />
     <main class="main">
-        <the-sidebar />
+        <TheSidebar />
         <div class="main-wrapper">
             <router-view />
         </div>
