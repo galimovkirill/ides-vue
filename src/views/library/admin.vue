@@ -70,7 +70,7 @@ import BaseTable from '@/components/shared/table/BaseTable.vue'
 import BaseTableRowItem from '@/components/shared/table/BaseTableRowItem.vue'
 import BaseTableHeaderItem from '@/components/shared/table/BaseTableHeaderItem.vue'
 import BaseModal from '@/components/shared/modal/BaseModal.vue'
-import { ref } from '@vue/reactivity'
+import { ref } from 'vue'
 
 const isAddFolderModalShown = ref(false)
 
