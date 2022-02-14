@@ -18,19 +18,6 @@ a {
     color: inherit;
 }
 
-.main {
-    padding-top: var(--ides-header-height);
-    padding-left: var(--ides-sidebar-width);
-
-    &-wrapper {
-        padding: 1.5rem;
-
-        & > * {
-            margin-bottom: 1.5rem;
-        }
-    }
-}
-
 h2 {
     font-size: 1.25rem;
     font-weight: 600;

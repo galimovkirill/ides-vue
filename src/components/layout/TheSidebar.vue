@@ -67,4 +67,10 @@ const navigation = computed(() => sidebarNavigation[role])
         }
     }
 }
+
+@media screen and (max-width: $ides-breakpoint-lg) {
+    .sidebar {
+        display: none;
+    }
+}
 </style>

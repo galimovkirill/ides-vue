@@ -1,41 +1,49 @@
 <template>
     <header class="header">
-        <div class="header-logo">
-            <router-link :to="{ name: 'dashboard' }" class="header-logo__app">
-                <img src="@/assets/images/logo.svg" alt="IDES" />
-            </router-link>
+        <div class="header__left">
+            <div class="burger">
+                <div class="burger__line"></div>
+                <div class="burger__line"></div>
+                <div class="burger__line"></div>
+            </div>
 
-            <a
-                href="https://mon.tatarstan.ru/"
-                target="_blank"
-                class="header-logo__customer"
-            >
-                <img src="@/assets/images/mon_ttr.svg" alt="МОН РТ" />
-                <span>
-                    Министерство образования и науки Республики Татарстан
-                </span>
-            </a>
+            <div class="logo-row">
+                <router-link :to="{ name: 'dashboard' }" class="logo-row__app">
+                    <img src="@/assets/images/logo.svg" alt="IDES" />
+                </router-link>
+
+                <a
+                    href="https://mon.tatarstan.ru/"
+                    target="_blank"
+                    class="logo-row__customer"
+                >
+                    <img src="@/assets/images/mon_ttr.svg" alt="МОН РТ" />
+                    <span>
+                        Министерство образования и науки Республики Татарстан
+                    </span>
+                </a>
+            </div>
         </div>
 
-        <div class="header-menu">
+        <div class="header__right">
             <router-link
                 :to="{ name: 'chats' }"
-                class="header-chat"
+                class="header__chat"
                 :class="{ active: true }"
             >
                 <svg-icon name="letter" />
             </router-link>
 
-            <router-link :to="{ name: 'settings' }" class="header-profile">
-                <span class="header-profile__name">Алибаев Тимур</span>
+            <router-link :to="{ name: 'settings' }" class="header__profile">
+                <span class="header__profile__name">Алибаев Тимур</span>
                 <img
                     src="https://upload.ides.plus/api/file-storage/17112021-232734_942-unnamed.jpeg"
                     alt=""
-                    class="header-profile__avatar"
+                    class="header__profile__avatar"
                 />
             </router-link>
 
-            <div class="header-logout">
+            <div class="header__logout">
                 <svg-icon name="logout" />
             </div>
         </div>
@@ -58,7 +66,22 @@
     background: var(--color-theme-layout);
     border-bottom: 1px solid var(--color-theme-border);
 
-    &-logo {
+    &__left {
+        display: flex;
+        align-items: center;
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+    }
+
+    .burger {
+        display: none;
+    }
+
+    .logo-row {
         display: flex;
         align-items: center;
 
@@ -74,19 +97,14 @@
             display: flex;
             align-items: center;
             font-weight: 600;
+            font-size: 14px;
             img {
                 margin-right: 0.75rem;
             }
         }
     }
 
-    &-menu {
-        display: flex;
-        align-items: center;
-        font-weight: 500;
-    }
-
-    &-chat {
+    &__chat {
         position: relative;
 
         svg {
@@ -119,13 +137,14 @@
         }
     }
 
-    &-profile {
+    &__profile {
         display: flex;
         align-items: center;
         margin: 0 1.5rem;
 
         &__name {
             font-size: 14px;
+            margin-right: 1rem;
         }
 
         &__avatar {
@@ -133,11 +152,10 @@
             height: 2.5rem;
             border-radius: var(--ides-border-radius);
             object-fit: cover;
-            margin-left: 1rem;
         }
     }
 
-    &-logout {
+    &__logout {
         display: flex;
         cursor: pointer;
 
@@ -150,6 +168,69 @@
             &:hover {
                 color: var(--color-primary-hover);
             }
+        }
+    }
+}
+
+@media screen and (max-width: $ides-breakpoint-lg) {
+    .header {
+        .burger {
+            display: flex;
+            flex-direction: column;
+            margin-right: 2rem;
+            cursor: pointer;
+
+            &__line {
+                width: 1.5rem;
+                height: 2px;
+                display: block;
+                background: var(--color-text);
+
+                &:not(:last-child) {
+                    margin-bottom: 6px;
+                }
+            }
+        }
+
+        .logo-row {
+            &__customer {
+                img {
+                    margin-right: 0;
+                }
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $ides-breakpoint-md) {
+    .header {
+        padding: 0 1rem;
+    }
+}
+
+@media screen and (max-width: $ides-breakpoint-sm) {
+    .header {
+        .logo-row {
+            &__app {
+                margin-right: 1rem;
+                img {
+                    height: 2rem;
+                }
+            }
+        }
+
+        &__profile {
+            margin: 0 0 0 1rem;
+            &__name {
+                display: none;
+            }
+        }
+
+        &__logout {
+            display: none;
         }
     }
 }

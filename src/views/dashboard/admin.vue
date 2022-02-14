@@ -99,4 +99,10 @@ const data_2 = [
         }
     }
 }
+
+@media screen and (max-width: $ides-breakpoint-xl) {
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 </style>
