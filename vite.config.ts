@@ -20,7 +20,10 @@ export default () => {
         css: {
             preprocessorOptions: {
                 scss: {
-                    additionalData: `@import "@/assets/styles/vars.scss";`,
+                    additionalData: `
+                        @import "@/assets/styles/scss-variables/vars.scss";
+                        @import "@/assets/styles/scss-variables/breakpoints.scss";
+                    `,
                 },
             },
         },

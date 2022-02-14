@@ -1,11 +1,9 @@
 <template>
     <BaseHeading>
-        <template #left>
-            <h2>База знаний</h2>
-        </template>
+        <h2>База знаний</h2>
 
+        <template #counter>4 файла</template>
         <template #right>
-            <span>4 файла</span>
             <BaseButton>Добавить</BaseButton>
             <BaseButton @click="isAddFolderModalShown = true">
                 Новая папка

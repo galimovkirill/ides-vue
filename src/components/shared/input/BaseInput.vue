@@ -1,6 +1,6 @@
 <template>
-    <div class="input">
-        <label v-if="label" :for="COMPONENT_UID" class="input-label">
+    <div class="input base-form-element">
+        <label v-if="label" :for="COMPONENT_UID" class="element-label">
             {{ label }}
         </label>
 
@@ -15,7 +15,10 @@
                 type="text"
                 :placeholder="placeholder"
                 class="input-element"
-                :class="{ 'has-start-icon': startIcon }"
+                :class="{
+                    'has-start-icon': startIcon,
+                    'revert-color': revertColor,
+                }"
                 :value="modelValue"
                 @input="updateValue"
             />
@@ -26,7 +29,7 @@
 <script setup lang="ts">
 import { getCurrentInstance } from 'vue'
 
-const props = defineProps({
+defineProps({
     label: {
         type: String || null,
         default: null,
@@ -38,6 +41,10 @@ const props = defineProps({
     startIcon: {
         type: String,
         default: null,
+    },
+    revertColor: {
+        type: Boolean,
+        default: false,
     },
     modelValue: String,
 })
@@ -55,33 +62,14 @@ const updateValue = (event: Event) => {
 
 <style lang="scss">
 .input {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+    &-wrapper {
+        position: relative;
+    }
 
-    .input-element {
-        height: 3rem;
-        background: var(--color-theme-background);
-        border-radius: var(--ides-border-radius);
-        padding: 0 1.25rem;
-        border: 1px solid var(--color-theme-border);
-        width: 100%;
-
-        &:focus {
-            outline: none;
-            border-color: var(--color-theme-border-focus);
-        }
-
+    &-element {
         &.has-start-icon {
             padding: 0 1.25rem 0 4rem;
         }
-    }
-
-    &-label {
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--color-text-01);
-        margin-bottom: 8px;
     }
 
     &__start-icon {

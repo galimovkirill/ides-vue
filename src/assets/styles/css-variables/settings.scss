@@ -2,6 +2,9 @@ $variables: (
     --ides-header-height: 4rem,
     --ides-sidebar-width: 13rem,
     --ides-border-radius: 8px,
+    --ides-form-element-height: 3rem,
+    // Breakpoints
+    --ides-breakpoint-lg: 1024px,
 );
 
 :root {
