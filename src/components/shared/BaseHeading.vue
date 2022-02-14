@@ -1,10 +1,13 @@
 <template>
     <div class="heading">
         <div>
-            <slot name="left"></slot>
+            <slot></slot>
         </div>
 
         <div class="heading__right">
+            <span v-if="$slots.counter" class="heading-counter">
+                <slot name="counter"></slot>
+            </span>
             <slot name="right"></slot>
         </div>
     </div>
@@ -24,6 +27,11 @@
         & > * {
             margin: 0.5rem;
         }
+    }
+
+    &-counter {
+        color: var(--color-text-01);
+        font-size: 14px;
     }
 }
 </style>

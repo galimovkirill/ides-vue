@@ -25,8 +25,6 @@ const isCollapseOpened = ref(false)
 </script>
 
 <style lang="scss">
-@import '@/assets/styles/vars.scss';
-
 .collapse {
     &-panel {
         display: flex;
