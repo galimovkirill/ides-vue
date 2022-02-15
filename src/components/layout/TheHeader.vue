@@ -43,12 +43,21 @@
                 />
             </router-link>
 
-            <div class="header__logout">
+            <button class="header__logout" @click="handleUserLogout">
                 <svg-icon name="logout" />
-            </div>
+            </button>
         </div>
     </header>
 </template>
+
+<script setup lang="ts">
+import { useStore } from '@/store/app'
+const store = useStore()
+
+const handleUserLogout = () => {
+    store.userLogout()
+}
+</script>
 
 <style lang="scss">
 .header {
@@ -158,6 +167,8 @@
     &__logout {
         display: flex;
         cursor: pointer;
+        border: none;
+        background: none;
 
         svg {
             width: 1.5rem;

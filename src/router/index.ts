@@ -1,25 +1,37 @@
+import { computed } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import { useStore } from '@/store/app'
 
-let userRole: string | null = null
+const userRole = computed(() => {
+    const store = useStore()
+    return store.getUserRole
+})
 
 import TmpComponent from '@/components/TmpComponent.vue'
 
 const routes = [
     {
+        path: '/login',
+        name: 'login',
+        component: () => import(`../views/auth/login.vue`),
+        meta: {
+            authTypeRoute: true,
+        },
+    },
+    {
         path: '/',
         name: 'dashboard',
-        component: () => import(`../views/dashboard/${userRole}.vue`),
+        component: () => import(`../views/dashboard/${userRole.value}.vue`),
     },
     {
         path: '/institution',
         name: 'institution',
-        component: () => import(`../views/institution/${userRole}.vue`),
+        component: () => import(`../views/institution/${userRole.value}.vue`),
     },
     {
         path: '/schedule',
         name: 'schedule',
-        component: () => import(`../views/schedule/${userRole}.vue`),
+        component: () => import(`../views/schedule/${userRole.value}.vue`),
     },
     {
         path: '/chats',
@@ -29,12 +41,12 @@ const routes = [
     {
         path: '/library',
         name: 'library',
-        component: () => import(`../views/library/${userRole}.vue`),
+        component: () => import(`../views/library/${userRole.value}.vue`),
     },
     {
         path: '/students',
         name: 'students',
-        component: () => import(`../views/students/${userRole}.vue`),
+        component: () => import(`../views/students/${userRole.value}.vue`),
     },
     {
         path: '/groups',
@@ -65,9 +77,12 @@ const router = createRouter({
     linkExactActiveClass: '',
 })
 
-router.beforeEach((to, from) => {
-    const store = useStore()
-    userRole = store.getUserRole
+router.beforeEach((to, from, next) => {
+    if (to.matched.some((r) => r.meta.authTypeRoute)) {
+        userRole.value ? next({ name: 'dashboard' }) : next()
+    } else {
+        userRole.value ? next() : next({ name: 'login' })
+    }
 })
 
 export default router
