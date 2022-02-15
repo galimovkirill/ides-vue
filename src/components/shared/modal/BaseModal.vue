@@ -55,6 +55,7 @@ onUnmounted(() => document.body.classList.remove('modal-shown'))
     background: var(--color-theme-layout);
     border: 1px solid var(--color-theme-border);
     border-radius: var(--ides-border-radius);
+    z-index: 100;
 
     &-wrapper {
         padding: 2.5rem;
@@ -92,6 +93,7 @@ onUnmounted(() => document.body.classList.remove('modal-shown'))
         height: 100%;
         background: var(--color-theme-layout);
         opacity: 0.45;
+        z-index: 99;
     }
 }
 </style>

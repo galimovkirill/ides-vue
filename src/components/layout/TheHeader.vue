@@ -74,6 +74,7 @@ const handleUserLogout = () => {
     height: var(--ides-header-height);
     background: var(--color-theme-layout);
     border-bottom: 1px solid var(--color-theme-border);
+    z-index: 50;
 
     &__left {
         display: flex;
