@@ -8,9 +8,15 @@ import '@/assets/styles/css-variables/_index.scss'
 import '@/assets/styles/main.scss'
 
 const app = createApp(App)
+const pinia = createPinia()
 
-app.use(createPinia())
+app.use(pinia)
 app.use(router)
+
+window.$app = {
+    router,
+    store: pinia.state.value,
+}
 
 import SvgIcon from '@/components/SvgIcon.vue'
 app.component('SvgIcon', SvgIcon)

@@ -11,7 +11,14 @@ module.exports = {
         'vue/multi-word-component-names': [
             'error',
             {
-                ignores: ['admin', 'student', 'teacher', 'parent'],
+                ignores: [
+                    'admin',
+                    'student',
+                    'teacher',
+                    'parent',
+                    'empty',
+                    'login',
+                ],
             },
         ],
     },

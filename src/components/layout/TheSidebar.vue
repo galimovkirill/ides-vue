@@ -24,6 +24,7 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
+// TODO: отрефакторить schoolAdmin
 const role = 'schoolAdmin'
 const navigation = computed(() => sidebarNavigation[role])
 </script>
