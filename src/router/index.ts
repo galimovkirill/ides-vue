@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useStore } from '@/store/app'
 
-import { store } from '@/store'
-import { computed } from 'vue'
-const userRole = computed(() => store.getters['user/getRole'])
+let userRole: string | null = null
 
 import TmpComponent from '@/components/TmpComponent.vue'
 
@@ -10,17 +9,17 @@ const routes = [
     {
         path: '/',
         name: 'dashboard',
-        component: () => import(`../views/dashboard/${userRole.value}.vue`),
+        component: () => import(`../views/dashboard/${userRole}.vue`),
     },
     {
         path: '/institution',
         name: 'institution',
-        component: () => import(`../views/institution/${userRole.value}.vue`),
+        component: () => import(`../views/institution/${userRole}.vue`),
     },
     {
         path: '/schedule',
         name: 'schedule',
-        component: TmpComponent,
+        component: () => import(`../views/schedule/${userRole}.vue`),
     },
     {
         path: '/chats',
@@ -30,12 +29,12 @@ const routes = [
     {
         path: '/library',
         name: 'library',
-        component: () => import(`../views/library/${userRole.value}.vue`),
+        component: () => import(`../views/library/${userRole}.vue`),
     },
     {
         path: '/students',
         name: 'students',
-        component: () => import(`../views/students/${userRole.value}.vue`),
+        component: () => import(`../views/students/${userRole}.vue`),
     },
     {
         path: '/groups',
@@ -64,6 +63,11 @@ const router = createRouter({
     routes,
     linkActiveClass: '',
     linkExactActiveClass: '',
+})
+
+router.beforeEach((to, from) => {
+    const store = useStore()
+    userRole = store.getUserRole
 })
 
 export default router
