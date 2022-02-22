@@ -28,6 +28,11 @@ const routes = [
         component: TmpComponent,
     },
     {
+        path: '/assignments',
+        name: 'assignments',
+        component: TmpComponent,
+    },
+    {
         path: '/chats',
         name: 'chats',
         component: TmpComponent,
@@ -55,6 +60,16 @@ const routes = [
     {
         path: '/plans',
         name: 'plans',
+        component: TmpComponent,
+    },
+    {
+        path: '/my-group',
+        name: 'my-group',
+        component: TmpComponent,
+    },
+    {
+        path: '/semester',
+        name: 'semester',
         component: TmpComponent,
     },
     {

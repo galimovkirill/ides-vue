@@ -1,7 +1,8 @@
 import { useStore } from '@/store/app'
 import { computed, defineAsyncComponent } from 'vue'
+import { RouteTypes } from '@/types/routes'
 
-export default (routeName: string) => {
+export default (routeName: RouteTypes) => {
     const store = useStore()
     const userRole = store.getUserRole
 

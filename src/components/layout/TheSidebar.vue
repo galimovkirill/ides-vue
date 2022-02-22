@@ -19,14 +19,15 @@
 
 <script setup lang="ts">
 import { sidebarNavigation } from '@/constants/navigation'
+import { useStore } from '@/store/app'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+const store = useStore()
+const userRole = store.getUserRole
 
-// TODO: отрефакторить schoolAdmin
-const role = 'schoolAdmin'
-const navigation = computed(() => sidebarNavigation[role])
+const navigation = computed(() => (userRole ? sidebarNavigation[userRole] : []))
 </script>
 
 <style lang="scss">

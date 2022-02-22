@@ -1,5 +1,5 @@
 export const sidebarNavigation = {
-    schoolAdmin: [
+    admin: [
         { label: 'Главная', icon: 'menu-home', routeName: 'dashboard' },
         {
             label: 'Учебное заведение',
@@ -18,15 +18,19 @@ export const sidebarNavigation = {
     student: [
         { label: 'Главная', icon: 'menu-home', routeName: 'dashboard' },
         { label: 'Расписание', icon: 'menu-schedules', routeName: 'schedule' },
-        { label: 'Задания', icon: 'menu-assignments', routeName: 'dashboard' }, // tmp
+        {
+            label: 'Задания',
+            icon: 'menu-assignments',
+            routeName: 'assignments',
+        },
         { label: 'Чаты', icon: 'menu-chats', routeName: 'chats' },
         { label: 'База знаний', icon: 'menu-catalog', routeName: 'library' },
         { label: 'Преподаватели', icon: 'menu-staff', routeName: 'teachers' },
-        { label: 'Моя группа', icon: 'menu-groups', routeName: 'dashboard' }, // tmp
-        { label: 'Семестр', icon: 'menu-students', routeName: 'dashboard' }, // tmp
+        { label: 'Моя группа', icon: 'menu-groups', routeName: 'my-group' },
+        { label: 'Семестр', icon: 'menu-students', routeName: 'semester' },
         { label: 'Настройки', icon: 'menu-settings', routeName: 'settings' },
     ],
-    staff: [
+    teacher: [
         { label: 'Главная', icon: 'menu-home', routeName: 'dashboard' },
         { label: 'Расписание', icon: 'menu-schedules', routeName: 'schedule' },
         {
