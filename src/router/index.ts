@@ -1,11 +1,5 @@
-import { computed } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import { useStore } from '@/store/app'
-
-const userRole = computed(() => {
-    const store = useStore()
-    return store.getUserRole
-})
 
 import TmpComponent from '@/components/TmpComponent.vue'
 
@@ -13,7 +7,7 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        component: () => import(`../views/auth/login.vue`),
+        component: () => import(`../views/login.vue`),
         meta: {
             authTypeRoute: true,
         },
@@ -21,17 +15,17 @@ const routes = [
     {
         path: '/',
         name: 'dashboard',
-        component: () => import(`../views/dashboard/${userRole.value}.vue`),
+        component: () => import(`../views/dashboard.vue`),
     },
     {
         path: '/institution',
         name: 'institution',
-        component: () => import(`../views/institution/${userRole.value}.vue`),
+        component: () => import(`../views/institution.vue`),
     },
     {
         path: '/schedule',
         name: 'schedule',
-        component: () => import(`../views/schedule/${userRole.value}.vue`),
+        component: TmpComponent,
     },
     {
         path: '/chats',
@@ -41,12 +35,12 @@ const routes = [
     {
         path: '/library',
         name: 'library',
-        component: () => import(`../views/library/${userRole.value}.vue`),
+        component: () => import(`../views/library.vue`),
     },
     {
         path: '/students',
         name: 'students',
-        component: () => import(`../views/students/${userRole.value}.vue`),
+        component: () => import(`../views/students.vue`),
     },
     {
         path: '/groups',
@@ -78,10 +72,13 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+    const store = useStore()
+    const userRole = store.getUserRole
+
     if (to.matched.some((r) => r.meta.authTypeRoute)) {
-        userRole.value ? next({ name: 'dashboard' }) : next()
+        userRole ? next({ name: 'dashboard' }) : next()
     } else {
-        userRole.value ? next() : next({ name: 'login' })
+        userRole ? next() : next({ name: 'login' })
     }
 })
 
