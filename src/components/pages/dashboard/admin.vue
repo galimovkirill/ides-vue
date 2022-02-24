@@ -11,9 +11,7 @@
     </div>
 
     <BaseWrapper class="dashboard-rating">
-        <template #header>
-            <h3>Рейтинг пользователей</h3>
-        </template>
+        <template #title>Рейтинг пользователей</template>
 
         <div class="rating-grid">
             <div class="rating-item">

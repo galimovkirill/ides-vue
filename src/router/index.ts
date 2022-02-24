@@ -75,7 +75,7 @@ const routes = [
     {
         path: '/settings',
         name: 'settings',
-        component: TmpComponent,
+        component: () => import(`../views/settings.vue`),
     },
 ]
 

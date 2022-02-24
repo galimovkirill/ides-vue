@@ -1,1 +1,6 @@
-export type RouteTypes = 'dashboard' | 'institution' | 'library' | 'students'
+export type RouteTypes =
+    | 'dashboard'
+    | 'institution'
+    | 'library'
+    | 'students'
+    | 'settings'

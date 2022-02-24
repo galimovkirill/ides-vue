@@ -1,29 +1,35 @@
 <template>
-    <div class="modal-overlay" @click="handleCloseModal"></div>
+    <teleport to="body">
+        <div class="modal-overlay" @click="handleCloseModal"></div>
 
-    <div class="modal" :style="{ maxWidth }">
-        <div class="modal-wrapper">
-            <div class="modal-header">
-                <slot name="header">
-                    <h3>{{ props.title }}</h3>
-                </slot>
+        <div class="modal" :style="{ maxWidth }">
+            <div class="modal-wrapper">
+                <div class="modal-header">
+                    <slot name="header">
+                        <h3>{{ props.title }}</h3>
+                    </slot>
 
-                <div class="modal-close" @click="handleCloseModal">&times;</div>
-            </div>
+                    <div class="modal-close" @click="handleCloseModal">
+                        &times;
+                    </div>
+                </div>
 
-            <div class="modal-body">
-                <slot></slot>
-            </div>
+                <div class="modal-body">
+                    <slot></slot>
+                </div>
 
-            <div v-if="$slots.footer" class="modal-footer">
-                <slot name="footer"></slot>
+                <div v-if="$slots.footer" class="modal-footer">
+                    <slot name="footer"></slot>
+                </div>
             </div>
         </div>
-    </div>
+    </teleport>
 </template>
 
 <script setup lang="ts">
 import { onMounted, onUnmounted } from '@vue/runtime-core'
+
+// TODO: добавить props и автоматически отображать кнопку "Отменить/Закрыть"
 
 const props = defineProps({
     title: {

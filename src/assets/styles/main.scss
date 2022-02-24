@@ -68,3 +68,11 @@ svg {
         margin-bottom: 8px;
     }
 }
+
+.form-gap {
+    .base-form-element {
+        &:not(:last-child) {
+            margin-bottom: 1.5rem;
+        }
+    }
+}

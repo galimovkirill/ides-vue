@@ -1,5 +1,5 @@
 <template>
-    <div class="input base-form-element">
+    <div class="input" :class="{ 'base-form-element': isBase }">
         <label v-if="label" :for="COMPONENT_UID" class="element-label">
             {{ label }}
         </label>
@@ -19,6 +19,7 @@
                     'has-start-icon': startIcon,
                     'revert-color': revertColor,
                 }"
+                :disabled="disabled"
                 :value="modelValue"
                 @input="updateValue"
             />
@@ -46,6 +47,14 @@ defineProps({
         type: Boolean,
         default: false,
     },
+    isBase: {
+        type: Boolean,
+        default: true,
+    },
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
     modelValue: String,
 })
 
@@ -67,6 +76,10 @@ const updateValue = (event: Event) => {
     }
 
     &-element {
+        &:disabled {
+            opacity: 0.7;
+        }
+
         &.has-start-icon {
             padding: 0 1.25rem 0 4rem;
         }

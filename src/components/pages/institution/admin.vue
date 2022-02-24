@@ -6,7 +6,9 @@
                 placeholder="Поиск"
                 start-icon="search"
             />
-            <BaseButton>Добавить</BaseButton>
+            <BaseButton @click="isAddInstitutionShown = true">
+                Добавить
+            </BaseButton>
         </div>
 
         <BaseTable
@@ -17,6 +19,22 @@
             :filter-fields="['fullName', 'post', 'age', 'experience']"
         />
     </BaseCollapse>
+
+    <BaseModal
+        v-if="isAddInstitutionShown"
+        title="Добавить в ректорат"
+        @close="isAddInstitutionShown = false"
+    >
+        <div class="form-gap">
+            <BaseInput label="ФИО" />
+            <BaseInput label="Должность" />
+        </div>
+
+        <template #footer>
+            <BaseButton type="secondary">Отмена</BaseButton>
+            <BaseButton>Добавить</BaseButton>
+        </template>
+    </BaseModal>
 </template>
 
 <script setup lang="ts">
@@ -25,8 +43,10 @@ import BaseInput from '@/components/shared/input/BaseInput.vue'
 import BaseButton from '@/components/shared/button/BaseButton.vue'
 import BaseTable from '@/components/shared/table/BaseTable.vue'
 import { ref } from 'vue'
+import BaseModal from '@/components/shared/modal/BaseModal.vue'
 
 const searchQuery = ref('')
+const isAddInstitutionShown = ref(false)
 
 const columns = [
     { field: 'fullName', label: 'ФИО' },

@@ -34,11 +34,12 @@ const navigation = computed(() => (userRole ? sidebarNavigation[userRole] : []))
 .sidebar {
     position: fixed;
     left: 0;
-    height: 100%;
+    height: calc(100% - var(--ides-header-height));
     top: calc(var(--ides-header-height) + 1px);
     width: var(--ides-sidebar-width);
     background: var(--color-theme-layout);
     border-right: 1px solid var(--color-theme-border);
+    overflow-y: scroll;
 
     &-navigation {
         display: flex;

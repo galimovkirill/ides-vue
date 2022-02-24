@@ -42,22 +42,20 @@
         </template>
     </BaseTable>
 
-    <teleport to="body">
-        <BaseModal
-            v-if="isAddFolderModalShown"
-            title="Добавить папку"
-            @close="isAddFolderModalShown = false"
-        >
-            <div>
-                <BaseInput label="Название" />
-            </div>
+    <BaseModal
+        v-if="isAddFolderModalShown"
+        title="Добавить папку"
+        @close="isAddFolderModalShown = false"
+    >
+        <div>
+            <BaseInput label="Название" />
+        </div>
 
-            <template #footer>
-                <BaseButton type="secondary">Отмена</BaseButton>
-                <BaseButton>Добавить</BaseButton>
-            </template>
-        </BaseModal>
-    </teleport>
+        <template #footer>
+            <BaseButton type="secondary">Отмена</BaseButton>
+            <BaseButton>Добавить</BaseButton>
+        </template>
+    </BaseModal>
 </template>
 
 <script lang="ts" setup>

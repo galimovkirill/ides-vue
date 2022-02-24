@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-        <div class="navigation-block">
+        <!-- <div class="navigation-block">
             <router-link
                 v-for="link in links"
                 :key="link.title"
@@ -8,7 +8,7 @@
             >
                 {{ link.title }}
             </router-link>
-        </div>
+        </div> -->
 
         <div class="auth-block">
             <h1>Войти в систему как:</h1>
