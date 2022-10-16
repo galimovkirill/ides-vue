@@ -4,12 +4,11 @@
     <BaseWrapper>
         <div class="settings-header">
             <div class="personal-info">
-                <div class="image">
-                    <img
-                        src="https://upload.ides.plus/api/file-storage/17112021-232734_942-unnamed.jpeg"
-                        alt=""
-                    />
-                </div>
+                <BaseAvatar
+                    src="https://upload.ides.plus/api/file-storage/17112021-232734_942-unnamed.jpeg"
+                    size="big"
+                    class="settings-header__avatar"
+                />
 
                 <div class="fullname">
                     <span>Алибаев</span>
@@ -41,6 +40,7 @@
 
 <script setup lang="ts">
 import BaseWrapper from '@/components/shared/BaseWrapper.vue'
+import BaseAvatar from '@/components/shared/avatar/BaseAvatar.vue'
 </script>
 
 <style lang="scss">
@@ -49,22 +49,13 @@ import BaseWrapper from '@/components/shared/BaseWrapper.vue'
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
 
+    &__avatar {
+        margin-right: 1rem;
+    }
+
     .personal-info {
         display: flex;
         align-items: center;
-
-        .image {
-            width: 4rem;
-            height: 4rem;
-            margin-right: 1rem;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: var(--ides-border-radius);
-            }
-        }
 
         .fullname {
             font-size: 18px;

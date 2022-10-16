@@ -55,7 +55,7 @@ const routes = [
     {
         path: '/teachers',
         name: 'teachers',
-        component: TmpComponent,
+        component: () => import('../views/teachers.vue'),
     },
     {
         path: '/plans',

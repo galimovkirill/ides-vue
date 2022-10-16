@@ -47,6 +47,10 @@
                 />
             </div>
         </div>
+
+        <BaseAlert>
+            Данные может редактировать только Администратор системы
+        </BaseAlert>
     </BaseWrapper>
 </template>
 
@@ -55,6 +59,7 @@ import { ref } from 'vue'
 import BaseWrapper from '@/components/shared/BaseWrapper.vue'
 import BaseInput from '@/components/shared/input/BaseInput.vue'
 import BaseFormGroup from '@/components/shared/form-group/BaseFormGroup.vue'
+import BaseAlert from '@/components/shared/alert/BaseAlert.vue'
 
 const firstName = ref('Тимур')
 const lastName = ref('Алибаев')
@@ -83,6 +88,10 @@ const phone = ref('+79992223311')
             grid-template-columns: 1fr 2fr 1fr;
             gap: 1rem;
         }
+    }
+
+    .alert {
+        margin-top: 1.5rem;
     }
 }
 </style>

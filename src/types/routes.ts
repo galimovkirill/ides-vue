@@ -4,3 +4,4 @@ export type RouteTypes =
     | 'library'
     | 'students'
     | 'settings'
+    | 'teachers'

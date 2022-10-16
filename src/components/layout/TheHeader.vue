@@ -36,10 +36,8 @@
 
             <router-link :to="{ name: 'settings' }" class="header__profile">
                 <span class="header__profile__name">Алибаев Тимур</span>
-                <img
+                <BaseAvatar
                     src="https://upload.ides.plus/api/file-storage/17112021-232734_942-unnamed.jpeg"
-                    alt=""
-                    class="header__profile__avatar"
                 />
             </router-link>
 
@@ -51,6 +49,7 @@
 </template>
 
 <script setup lang="ts">
+import BaseAvatar from '../shared/avatar/BaseAvatar.vue'
 import { useStore } from '@/store/app'
 const store = useStore()
 
@@ -155,13 +154,6 @@ const handleUserLogout = () => {
         &__name {
             font-size: 14px;
             margin-right: 1rem;
-        }
-
-        &__avatar {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: var(--ides-border-radius);
-            object-fit: cover;
         }
     }
 

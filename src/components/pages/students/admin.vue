@@ -13,28 +13,28 @@
     <BaseFilterPanel :cols="12" :spans="[4, 2, 2, 2, 2]">
         <BaseInput start-icon="search" placeholder="Поиск" revert-color />
         <BaseSelect
-            :options="selectOptions"
+            :options="faculties"
             option-name-key="name"
             option-value-key="id"
             option-label="Факультет"
             revert-color
         />
         <BaseSelect
-            :options="selectOptions"
+            :options="faculties"
             option-name-key="name"
             option-value-key="id"
             option-label="Факультет"
             revert-color
         />
         <BaseSelect
-            :options="selectOptions"
+            :options="faculties"
             option-name-key="name"
             option-value-key="id"
             option-label="Факультет"
             revert-color
         />
         <BaseSelect
-            :options="selectOptions"
+            :options="faculties"
             option-name-key="name"
             option-value-key="id"
             option-label="Факультет"
@@ -60,6 +60,7 @@ import BaseTable from '@/components/shared/table/BaseTable.vue'
 import BaseTableRowItem from '@/components/shared/table/BaseTableRowItem.vue'
 import BaseBadge from '@/components/shared/badge/BaseBadge.vue'
 import BaseSelect from '@/components/shared/select/BaseSelect.vue'
+import { faculties } from '@/constants/api'
 
 const tableCols = [
     { field: 'fullName', label: 'ФИО' },
@@ -77,11 +78,5 @@ const tableData = [
         group: 'Математика',
         status: 'Обучается',
     },
-]
-
-const selectOptions = [
-    { id: 0, name: 'Математический факультет' },
-    { id: 1, name: 'Факультет прикладных информационных технологий' },
-    { id: 2, name: 'Факультет авиации, наземного транспорта и энергетики' },
 ]
 </script>
